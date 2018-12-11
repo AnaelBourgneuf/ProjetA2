@@ -1,24 +1,43 @@
 1) « Développement d’une nouvelle application mobile » pour la vie étudiante à l'IMIE
-Contexte : application mobile liée à l'IMIE et reprenant quelques fonctionnalités, et en y ajoutant quelques unes.
-Objectif : offrir une expérience utilisateur supérieure sur mobile accéssible à tous et rapidement.
+Contexte : application mobile liée à l'IMIE et regroupant quelques fonctionnalitées deja existantes et ajoutant quelques autres.
+Objectif : offrir une expérience utilisateur supérieure sur applications mobile (Android + iOS) et navigateur, accessible à tous et rapidement.
 Historique : réalisation d’une première version de l’app (V1) en cours et à présenter une premiere version le 21 Décembre
 
 2) Besoins et contraintes liés au projet
-Dans cette deuxième section, il faut décrire la solution à travers :
 
-L’analyse et l’expression de ses besoins fonctionnels ;
+Analyse et expression des besoins fonctionnels : 
+	L'utilisateur doit pouvoir se creer un compte
+	L'utilisateur doit pouvoir se connecter à son compte
+	L'utilisateur doit pouvoir se deconnecter de son compte
+
+	L'utilisateur doit pouvoir creer un evennement
+	L'utilisateur doit pouvoir visualiser les evennements d'une periode donnée
+	L'utilisateur doit pouvoir visualiser les details d'un evennement donné
+	L'utilisateur doit pouvoir s'inscrire à un evennement
+	L'utilisateur doit pouvoir se desinscrire d'un evennement
+	L'utilisateur doit pouvoir visualiser les membres inscris à un evennement
+
+	L'utilisateur doit pouvoir acceder aux liens Google Form pour donner son avis sur les differents cours
+	(L'utilisateur doit pouvoir recevoir une notification lors de la mise a disposition du lien Google Form)
+
+	L'utilisateur doit pouvoir deposer une idée dans la "boite à idées" prévue à cet effet
+	(L'administrateur doit pouvoir recevoir une notification lorsqu'une idée est déposée dans la boite)
+	(l'administrateur doit pouvoir acceder au contenu de la boite à idée)
+
+	L'utilisateur doit pouvoir acceder à la liste des personnes dans sa classe
+	L'utilisateur doit pouvoir acceder au profil des personnes de sa classe
+
+	(L'utilisateur doit pouvoir signaler un retard un un seul clic)
+	(L'utilisateur doit pouvoir etre signalé par une notification du retard d'un de ses camarades)
+
+
 Ses contraintes techniques et son architecture ;
-Toutes les exigences particulières inhérentes au projet.
-Exemple :
-
-Besoins fonctionnels : accéder aux fonctionnalités de www.monsite.com à partir de l’application mobile (consultation de profils, lecture d’articles), utiliser une messagerie instantanée pour fluidifier la communication entre les membres du site…
-
-Contraintes : développement en Java et en Objective C, application destinée à Android et à iOS (deux versions), soumission et déploiement sur les app stores à la charge du prestataire.
-
+	Serveur distant et autonome
+	Sessions par token
 
 
 3) Résultats attendus
-Il s’agit de présenter les prestations ou les produits effectivement attendus à l’issue du projet et les exigences particulières conditionnant leur acceptation.
+	
 
 Exemple :
 
