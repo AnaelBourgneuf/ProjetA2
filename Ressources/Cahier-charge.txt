@@ -1,0 +1,29 @@
+1) « Développement d’une nouvelle application mobile » pour la vie étudiante à l'IMIE
+Contexte : application mobile liée à l'IMIE et reprenant quelques fonctionnalités, et en y ajoutant quelques unes.
+Objectif : offrir une expérience utilisateur supérieure sur mobile accéssible à tous et rapidement.
+Historique : réalisation d’une première version de l’app (V1) en cours et à présenter une premiere version le 21 Décembre
+
+2) Besoins et contraintes liés au projet
+Dans cette deuxième section, il faut décrire la solution à travers :
+
+L’analyse et l’expression de ses besoins fonctionnels ;
+Ses contraintes techniques et son architecture ;
+Toutes les exigences particulières inhérentes au projet.
+Exemple :
+
+Besoins fonctionnels : accéder aux fonctionnalités de www.monsite.com à partir de l’application mobile (consultation de profils, lecture d’articles), utiliser une messagerie instantanée pour fluidifier la communication entre les membres du site…
+
+Contraintes : développement en Java et en Objective C, application destinée à Android et à iOS (deux versions), soumission et déploiement sur les app stores à la charge du prestataire.
+
+
+
+3) Résultats attendus
+Il s’agit de présenter les prestations ou les produits effectivement attendus à l’issue du projet et les exigences particulières conditionnant leur acceptation.
+
+Exemple :
+
+Résultats attendus : création de maquettes, intégration, développement effectif de l’application mobile, mise en ligne sur les App Stores…
+
+Exigences : livraison des fichiers PSD / Sketch, respect de la charte graphique…
+
+ 
