@@ -2,8 +2,8 @@ swagger: "2.0"
 info:
   title: Simple API overview
   description: Hello
-  version: v2
-host: www.monapi.dev
+  version: "v1"
+# host: www.monapi.dev
 paths:
   /Users:
     get:
@@ -230,7 +230,7 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Event/delete/{eventID}:
+  /Events/delete/{eventID}:
     delete:
       summary: delete an event
       tags:
@@ -298,7 +298,7 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Idea:
+  /Ideas:
     get:
       summary: retrive all ideas
       tags:
@@ -399,7 +399,7 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Idea/delete/{ideaID}:
+  /Ideas/delete/{ideaID}:
     delete:
       summary: delete an idea
       tags:
@@ -513,3 +513,8 @@ tags:
     description: Everything about promos
   - name: Ideas
     description: Everything about ideas
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /AnaelBM/testApi/v1
+schemes:
+ - https
