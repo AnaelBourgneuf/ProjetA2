@@ -1,0 +1,484 @@
+swagger: "2.0"
+info:
+  title: Simple API overview
+  description: Hello
+  version: v2
+host: www.monapi.dev
+paths:
+  /Users:
+    get:
+      summary: retrive all users
+      tags:
+        - Users
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Users/{userID}:
+    get:
+      summary: retrive single user
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          type: integer
+          minimum: 1
+          description: The user ID
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/User'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Users/new:
+    post:
+      summary: add a user
+      tags:
+        - Users
+      parameters:
+        - in: body
+          name: user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+          description: all user infos
+      responses:
+        201 :
+          description : CREATED
+          schema:
+            $ref: '#/definitions/User'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Users/update/{userID}:
+    put:
+      summary: update a user
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          type: integer
+          minimum: 1
+          description: The user ID
+        - in: body
+          name: user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+          description: all new user infos
+      responses:
+        202 :
+          description : ACCEPTED
+          schema:
+            $ref: '#/definitions/User'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Users/delete/{userID}:
+    delete:
+      summary: delete a users
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          type: integer
+          minimum: 1
+          description: ID of the user to delete
+      responses:
+        200:
+          description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Events:
+    get:
+      summary: retrive all events
+      tags:
+        - Events
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Event'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Events/{eventID}:
+    get:
+      summary: retrive single event
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventID
+          required: true
+          type: integer
+          minimum: 1
+          description: The event ID
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Event'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Events/new:
+    post:
+      summary: add an Event
+      tags:
+        - Events
+      parameters:
+        - in: body
+          name: event
+          required: true
+          schema:
+            $ref: '#/definitions/Event'
+          description: all event infos
+      responses:
+        201 :
+          description : CREATED
+          schema:
+            $ref: '#/definitions/Event'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Events/update/{eventID}:
+    put:
+      summary: update an event
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventID
+          required: true
+          type: integer
+          minimum: 1
+          description: The event ID
+        - in: body
+          name: user
+          required: true
+          schema:
+            $ref: '#/definitions/Event'
+          description: all new event infos
+      responses:
+        202 :
+          description : ACCEPTED
+          schema:
+            $ref: '#/definitions/Event'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Event/delete/{eventID}:
+    delete:
+      summary: delete an event
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventID
+          required: true
+          type: integer
+          minimum: 1
+          description: ID of the event to delete
+      responses:
+        200:
+          description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Promos:
+    get:
+      summary: retrive all promos
+      tags:
+        - Promos
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Promo'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Promos/{promoID}:
+    get:
+      summary: retrive single promo
+      tags:
+        - Promos
+      parameters:
+        - in: path
+          name: promoID
+          required: true
+          type: integer
+          minimum: 1
+          description: The promotion ID
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Promo'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Idea:
+    get:
+      summary: retrive all ideas
+      tags:
+        - Ideas
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Idea'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Ideas/{ideaID}:
+    get:
+      summary: retrive single idea
+      tags:
+        - Ideas
+      parameters:
+        - in: path
+          name: ideaID   # Note the name is the same as in the path
+          required: true
+          type: integer
+          minimum: 1
+          description: The idea ID
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Idea'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Ideas/new:
+    post:
+      summary: add an Idea
+      tags:
+        - Ideas
+      parameters:
+        - in: body
+          name: event
+          required: true
+          schema:
+            $ref: '#/definitions/Event'
+          description: all event infos
+      responses:
+        201 :
+          description : CREATED
+          schema:
+            $ref: '#/definitions/Event'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Idea/delete/{ideaID}:
+    delete:
+      summary: delete an idea
+      tags:
+        - Ideas
+      parameters:
+        - in: path
+          name: ideaID
+          required: true
+          type: integer
+          minimum: 1
+          description: ID of the idea to delete
+      responses:
+        200:
+          description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+definitions:
+  User:
+    type: object
+    properties:
+      id: 
+        type: integer
+        example: 1
+      firstName: 
+        type: string
+        example: Roger
+      name: 
+        type: string
+        example: Duchamp
+      birthD: 
+        type: string
+        example: '12/12/1212'
+      alias: 
+        type: string
+        example: Roger's
+      promo:
+          $ref: '#/definitions/Promo'
+      mail :
+        type: string
+        example: prenom.nom@imie.fr
+      isAdmin :
+        type: boolean
+        example: false
+  Promo:
+    type: object
+    properties:
+      ID:
+        type: integer
+        example: 1
+      Name:
+        type: string
+        example: Dev-A2
+      Alias:
+        type: string
+        example: Autistart+
+  Event:
+    type: object
+    properties:
+      ID:
+        type: integer
+        example: 1
+      Title:
+        type: string
+        example: Jour de l'an
+      DateTime:
+        type: string
+        example: "01/01/2019"
+      CreateDateTime:
+        type: string
+        example: '01/12/2018'
+      Users:
+        type: array
+        items:
+          type: object
+          properties:
+            UserID:
+              type: integer
+              example: 1
+            JoinDateTime :
+              type: string
+              example: "11/12/2018 11:11:00"
+  Idea:
+    type: object
+    properties:
+      ID:
+        type: integer
+        example: 1
+      Title:
+        type: string
+        example: "Mon idée1"
+      Text:
+        type: string
+        example: "Blablabla Blablabla Blablabla"
+      DateTime:
+        type: string
+        example: "9/12/2018 11:11:02"
+      User:
+        $ref: "#/definitions/User"
+tags:
+  - name: Users
+    description: Everything about users
+  - name: Events
+    description: Everything about events
+  - name: Promos
+    description: Everything about promos
+  - name: Ideas
+    description: Everything about ideas
