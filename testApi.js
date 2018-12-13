@@ -52,7 +52,7 @@ describe("HTTP assertions : Retrive one User", function () {
 //          Add one User
 //--------------------------------
 describe("HTTP assertions : Add one User", function () {
-  it("It should return HTTP_200 : user ", function () {
+  it("It should return HTTP_201 : user ", function () {
     var response = chakram.post("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Users/new", UserData);
     expect(response).to.have.status(201);
     expect(response).to.have.header("content-type", "application/json");
@@ -88,6 +88,76 @@ describe("HTTP assertions : Delete one User", function () {
 
 
 
+
+
+//------------------------------------------------------------------------------------------------
+//                        Tests sur /Ideas
+//------------------------------------------------------------------------------------------------
+
+
+//          Retrive all Events
+//--------------------------------
+describe("HTTP assertions : Retrive all Events", function () {
+  it("It should return HTTP_200 : list with events ", function () {
+    var response = chakram.get("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Events");
+    expect(response).to.have.status(200);
+    expect(response).to.have.header("content-type", "application/json"); 
+    expect(response).to.have.schema(expectedUserSchema);
+    expect(response).to.have.json('[0]', expectedUserData);
+    return chakram.wait();
+  });
+});
+
+
+//          Retrive one Event
+//--------------------------------
+describe("HTTP assertions : Retrive one Event", function () {
+  it("It should return HTTP_200 : event ", function () {
+    var response = chakram.get("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Events/1");
+    expect(response).to.have.status(200);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedUserSchema);
+    expect(response).to.have.json(expectedUserData);
+    return chakram.wait();
+  });
+});
+
+//          Add one Event
+//--------------------------------
+describe("HTTP assertions : Add one Event", function () {
+  it("It should return HTTP_201 : event ", function () {
+    var response = chakram.post("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Events/new", Event);
+    expect(response).to.have.status(201);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedUserSchema);
+    expect(response).to.have.json(expectedUserData);
+    return chakram.wait();
+  });
+});
+
+//          Update one Event
+//--------------------------------
+describe("HTTP assertions : Update one Event", function () {
+  it("It should return HTTP_202 : event ", function () {
+    var response = chakram.put("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Events/update/1", Event);
+    expect(response).to.have.status(202);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedUserSchema);
+    expect(response).to.have.json(expectedUserData);
+    return chakram.wait();
+  });
+});
+
+//          Delete one Event
+//--------------------------------
+describe("HTTP assertions : Delete one Event", function () {
+  it("It should return HTTP_200", function () {
+    var response = chakram.delete("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Events/delete/1", );
+    expect(response).to.have.status(200);
+    expect(response).to.have.header("content-type", "application/json");
+    return chakram.wait();
+  });
+});
 
 
 
@@ -127,7 +197,7 @@ describe("HTTP assertions : Retrive one Idea", function () {
 //          Add one Idea
 //--------------------------------
 describe("HTTP assertions : Add one Idea", function () {
-  it("It should return HTTP_200 : idea ", function () {
+  it("It should return HTTP_201 : idea ", function () {
     var response = chakram.post("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Ideas/new", IdeaData);
     expect(response).to.have.status(201);
     expect(response).to.have.header("content-type", "application/json");
@@ -160,11 +230,6 @@ describe("HTTP assertions : Delete one Idea", function () {
     return chakram.wait();
   });
 });
-
-
-
-
-
 
 
 
@@ -204,7 +269,7 @@ describe("HTTP assertions : Retrive one Promo", function () {
 //          Add one Promo
 //--------------------------------
 describe("HTTP assertions : Add one Promo", function () {
-  it("It should return HTTP_200 : promo ", function () {
+  it("It should return HTTP_201 : promo ", function () {
     var response = chakram.post("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Promos/new", PromoData);
     expect(response).to.have.status(201);
     expect(response).to.have.header("content-type", "application/json");
