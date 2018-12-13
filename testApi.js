@@ -200,3 +200,40 @@ describe("HTTP assertions : Retrive one Promo", function () {
     return chakram.wait();
   });
 });
+
+//          Add one Promo
+//--------------------------------
+describe("HTTP assertions : Add one Promo", function () {
+  it("It should return HTTP_200 : promo ", function () {
+    var response = chakram.post("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Promos/new", PromoData);
+    expect(response).to.have.status(201);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedPromoSchema);
+    expect(response).to.have.json(PromoData);
+    return chakram.wait();
+  });
+});
+
+//          Update one Promo
+//--------------------------------
+describe("HTTP assertions : Update one Promo", function () {
+  it("It should return HTTP_202 : promo ", function () {
+    var response = chakram.put("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Promos/update/1", PromoData);
+    expect(response).to.have.status(202);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedPromoSchema);
+    expect(response).to.have.json(PromoData);
+    return chakram.wait();
+  });
+});
+
+//          Delete one Promo
+//--------------------------------
+describe("HTTP assertions : Delete one Promo", function () {
+  it("It should return HTTP_200", function () {
+    var response = chakram.delete("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Promos/delete/1");
+    expect(response).to.have.status(200);
+    expect(response).to.have.header("content-type", "application/json");
+    return chakram.wait();
+  });
+});
