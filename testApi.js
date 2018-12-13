@@ -160,3 +160,41 @@ describe("HTTP assertions : Delete one Idea", function () {
     return chakram.wait();
   });
 });
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------
+//                        Tests sur /Promos
+//------------------------------------------------------------------------------------------------
+
+
+//          Retrive all Promos
+//--------------------------------
+describe("HTTP assertions : Retrive all Promos", function () {
+  it("It should return HTTP_200 : list with promos ", function () {
+    var response = chakram.get("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Promos");
+    expect(response).to.have.status(200);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema({Promos: {type: 'array', items: {promo: expectedPromoSchema}}});
+    expect(response).to.have.json('[0]', PromoData);
+    return chakram.wait();
+  });
+});
+
+//          Retrive one Promo
+//--------------------------------
+describe("HTTP assertions : Retrive one Promo", function () {
+  it("It should return HTTP_200 : promo ", function () {
+    var response = chakram.get("http://virtserver.swaggerhub.com/AnaelBM/testApi/v1/Promos/1");
+    expect(response).to.have.status(200);
+    expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedPromoSchema);
+    expect(response).to.have.json(PromoData);
+    return chakram.wait();
+  });
+});
