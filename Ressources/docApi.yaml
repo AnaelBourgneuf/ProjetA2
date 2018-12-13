@@ -212,7 +212,7 @@ paths:
           minimum: 1
           description: The event ID
         - in: body
-          name: user
+          name: event
           required: true
           schema:
             $ref: '#/definitions/Event'
@@ -298,6 +298,85 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
+  /Promos/new:
+    post:
+      summary: add a Promo
+      tags:
+        - Promos
+      parameters:
+        - in: body
+          name: promo
+          required: true
+          schema:
+            $ref: '#/definitions/Promo'
+          description: all promo infos
+      responses:
+        201 :
+          description : CREATED
+          schema:
+            $ref: '#/definitions/Promo'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Promos/update/{promoID}:
+    put:
+      summary: update a promo
+      tags:
+        - Promos
+      parameters:
+        - in: path
+          name: promoID
+          required: true
+          type: integer
+          minimum: 1
+          description: The promo ID
+        - in: body
+          name: promo
+          required: true
+          schema:
+            $ref: '#/definitions/Promo'
+          description: all new promo infos
+      responses:
+        202 :
+          description : ACCEPTED
+          schema:
+            $ref: '#/definitions/Promo'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /Promos/delete/{promoID}:
+    delete:
+      summary: delete a promo
+      tags:
+        - Promos
+      parameters:
+        - in: path
+          name: promoID
+          required: true
+          type: integer
+          minimum: 1
+          description: ID of the promo to delete
+      responses:
+        200:
+          description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
   /Ideas:
     get:
       summary: retrive all ideas
@@ -353,13 +432,13 @@ paths:
           name: event
           required: true
           schema:
-            $ref: '#/definitions/Event'
+            $ref: '#/definitions/Idea'
           description: all event infos
       responses:
         201 :
           description : CREATED
           schema:
-            $ref: '#/definitions/Event'
+            $ref: '#/definitions/Idea'
         204 :
           description : No Content
         400 :
@@ -452,57 +531,56 @@ definitions:
   Promo:
     type: object
     properties:
-      ID:
+      id:
         type: integer
         example: 1
-      Name:
+      name:
         type: string
         example: Dev-A2
-      Alias:
+      alias:
         type: string
         example: Autistart+
   Event:
     type: object
     properties:
-      ID:
+      id:
         type: integer
         example: 1
-      Title:
+      title:
         type: string
         example: Jour de l'an
-      DateTime:
+      dateTime:
         type: string
         example: "01/01/2019"
-      CreateDateTime:
+      createDateTime:
         type: string
         example: '01/12/2018'
-      Users:
+      users:
         type: array
         items:
           type: object
           properties:
-            UserID:
-              type: integer
-              example: 1
-            JoinDateTime :
+            user:
+              $ref: "#/definitions/User"
+            joinDateTime :
               type: string
               example: "11/12/2018 11:11:00"
   Idea:
     type: object
     properties:
-      ID:
+      id:
         type: integer
         example: 1
-      Title:
+      title:
         type: string
         example: "Mon idée1"
-      Text:
+      text:
         type: string
         example: "Blablabla Blablabla Blablabla"
-      DateTime:
+      dateTime:
         type: string
         example: "9/12/2018 11:11:02"
-      User:
+      user:
         $ref: "#/definitions/User"
 tags:
   - name: Users
