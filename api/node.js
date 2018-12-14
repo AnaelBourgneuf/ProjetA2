@@ -10,7 +10,7 @@ var ReviewData = {id: 1, title: "Module Api", dateTime: "14/12/2018 17:00:00", a
 
 
 //je declare les parametres de mon serveur local
-const hostname = '127.0.0.1';
+const hostname = '0.0.0.0';
 const port = 3000;
 
 //je declare l'url de mon api (swagger)
