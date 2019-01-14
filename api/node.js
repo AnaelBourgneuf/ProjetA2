@@ -1,11 +1,23 @@
 const http = require('http');
 const express = require('express');
+// imports objets
+// const Promo = require('./src/entities/Promo.js')
+// const User = require('./src/entities/User.js')
+// const Event = require('./src/entities/Event.js')
+// const Idea = require('./src/entities/Idea.js')
+// const Review = require('./src/entities/Review.js')
+
+// essais objets
+// var promo1 = new Promo.constructor('Dev_A2', 'Autistart+', 1);
+// var user1 = new User.constructor('Dylan', 'Bydule', '1996/05/16', 'Dydule', promo1.getJson(), 'dylan.bydule@imie.fr', false, 1);
+
+// console.log(user1.getJson());
 
 //Je declare des variables utiles
 var PromoData = {id: 1, name: 'Dev-A2', alias: 'Autistart+'}
 var UserData = {id: 1, firstName: 'Roger', name: 'Duchamp', birthD: '12/12/1212', alias: "Roger's", promo: PromoData, mail: 'prenom.nom@imie.fr', isAdmin: false}
-var EventData = {id: 1, title: "Jour de l'an", dateTime: "01/01/2019", createDateTime: '01/12/2018', users: [{user: UserData, joinDateTime: "11/12/2018 11:11:00"}]}
-var IdeaData = {id: 1, title: "Mon idée1", text: "Blablabla Blablabla Blablabla", dateTime: "9/12/2018 11:11:02", user: UserData}
+var EventData = {id: 1, title: "Jour de l'an", dateTime: "01/01/2019", createDateTime: '01/12/2018', creator: UserData, users: [{user: UserData, joinDateTime: "11/12/2018 11:11:00"}]}
+var IdeaData = {id: 1, title: "Mon idée1", text: "Blablabla Blablabla Blablabla", dateTime: "9/12/2018 11:11:02", user: UserData, reactions: [{user: UserData, state: true, content:"blablabla"}]}
 var ReviewData = {id: 1, title: "Module Api", dateTime: "14/12/2018 17:00:00", adress: "http://www.google.com/", promo: PromoData}
 
 
@@ -13,17 +25,12 @@ var ReviewData = {id: 1, title: "Module Api", dateTime: "14/12/2018 17:00:00", a
 const hostname = '0.0.0.0';
 const port = 3000;
 
-//je declare l'url de mon api (swagger)
-const apiUrl = 'virtserver.swaggerhub.com/AnaelBM/testApi/v1';
-
 var app = express();
 var monRouter = express.Router();
 
-
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://127.0.0.1:${port}/`);
 });
-
 
 
 
@@ -134,7 +141,7 @@ monRouter.route('/Ideas/:ideaID')
 
 // Déclaration de sroutes pour /Promos
 monRouter.route('/Promos')
-.get(function(req, res)
+.get(function(req, res)																				// Done
 {
 	res.status(200)
 	res.header({'content-type': 'application/json'})
@@ -148,7 +155,7 @@ monRouter.route('/Promos')
 });
 
 monRouter.route('/Promos/:promoID')
-.get(function(req, res)
+.get(function(req, res)																				// Done
 {
 	res.status(200)
 	res.header({'content-type': 'application/json'})

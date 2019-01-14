@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Api pour le projet de l'année",
+  "main": "node.js",
+  "scripts": {
+    "test": "node ../testApi.js"
+  },
+  "author": "Anael Bourgneuf-Monclair / Timothé Iskander",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
