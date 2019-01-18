@@ -1,7 +1,7 @@
 const {Router} = require("express")
-const controller = require('../controllers/UserController')
+const controller = require('../controllers/userController')
 
-const {addUser, getUserById, getUsersList, updateUser, deleteUser} = require('../controllers/UserController')
+const {addUser, getUserById, getUsersList, updateUser, deleteUser} = require('../controllers/userController')
 
 const app = module.exports = Router()
 

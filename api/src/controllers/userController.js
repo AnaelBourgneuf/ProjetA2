@@ -1,4 +1,4 @@
-const UserRepository = require('../Repositories/UserRepository')
+const UserRepository = require('../repositories/userRepository')
 
 const Joi = require('joi')
 

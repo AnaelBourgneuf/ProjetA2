@@ -1,4 +1,4 @@
-const PromoRepository = require('../Repositories/PromoRepository')
+const PromoRepository = require('../repositories/promoRepository')
 
 const Joi = require('joi')
 

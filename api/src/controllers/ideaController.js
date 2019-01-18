@@ -1,4 +1,4 @@
-const IdeaRepository = require('../Repositories/IdeaRepository')
+const IdeaRepository = require('../repositories/ideaRepository')
 
 const Joi = require('joi')
 

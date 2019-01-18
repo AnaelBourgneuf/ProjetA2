@@ -2,7 +2,7 @@ const {Router} = require("express")
 const app = module.exports = Router()
 
 
-const {addPromo, getPromoById, getPromosList, updatePromo, deletePromo} = require('../controllers/PromoController')
+const {addPromo, getPromoById, getPromosList, updatePromo, deletePromo} = require('../controllers/promoController')
 
 // Declaration de routes pour /Promos
 app.route('/')
