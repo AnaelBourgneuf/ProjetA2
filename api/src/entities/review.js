@@ -1,6 +1,6 @@
 //console.log('*** REVIEW ***');
 
-class Idea {
+class Review {
 	// constructeur
 	constructor (title="", dateTime="", adress="", promo= new Promo(), id=null) {
 		this.id = id;
