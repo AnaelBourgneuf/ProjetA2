@@ -1,18 +1,46 @@
-promos = [{id: 1, name: 'Dev-A2', alias: 'Autistart+'}]
+const PromoRepository = require('../Repositories/PromoRepository')
 
-function getPromos(){
-	return promos;
+const Joi = require('joi')
+
+let promos = PromoRepository
+
+
+exports.getPromosList = (req, res) => {
+	res.send(promos.getPromos())
+	res.end()
 }
 
-function getPromoById(id){
-	for (var i = 0; i < promos.length; i++) {
-		if (promos[i][id] == id){
-			return promos[i];
-		}
+exports.getPromoById = (req, res) => {
+	const promo = promos.getPromoById(req.params.id)
+	if (promo) {
+		res.send(promo)
+	} else {
+		res.status(404).send('promo not found')
 	}
-	return null;
+	res.end()
 }
 
-function addPromo(name, alias){
-	newPromo = {id: (promos[promos.length - 1][id])+1, name: name, alias: alias}
+exports.addPromo = (req, res) => {
+	res.send(promos.addPromo(req.body))
+}
+
+exports.updatePromo = (req, res) => {
+	const promo = promos.getPromoById(req.params.id)
+	if (promo) {
+		//emailShouldBeAvailable(req, res)
+		res.status(200).send(promo.updatePromo(req.params.id, req.body))
+	} else {
+		res.status(404).send('promo not found')
+	}
+}
+
+exports.deletePromo = (req, res) => {
+	const promo = promos.getPromoById(req.params.id)
+	if (promo) {
+		promos.deletePromo(req.params.id)
+		res.status(204).send('promo deleted')
+	} else {
+		res.status(404).send('promo not found')
+	}
+	res.end()
 }
