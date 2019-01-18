@@ -35,7 +35,7 @@ app.listen(port, hostname, () => {
 
 
 //-----------------------------------------------------
-//  Maintenant c'est pret, plus qu'à faire les routes
+//  Maintenant c'est pret, plus qu'à faire les routes |
 //-----------------------------------------------------
 
 // un moyen de connaitre la version de l'api

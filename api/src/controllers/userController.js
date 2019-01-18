@@ -7,12 +7,13 @@ let users = UserRepository
 
 
 
-
+// pour recuperer la liste complete des utilisateurs
 exports.getUsersList = (req, res) => {
 	res.send(users.getUsers())
 	res.end()
 }
 
+// pour recuperer un utilisateur specifique par son identifiant
 exports.getUserById = (req, res) => {
 	const user = users.getUserById(req.params.id)
 	if (user) {
@@ -23,11 +24,13 @@ exports.getUserById = (req, res) => {
 	res.end()
 }
 
+// pour ajouter un nouvel utilisateur
 exports.addUser = (req, res) => {
 	//emailShouldBeAvailable(req.body.email)
 	res.send(users.addUser(req.body))
 }
 
+// pour modifier les informations d'un utilisateur
 exports.updateUser = (req, res) => {
 	const user = users.getUserById(req.params.id)
 	if (user) {
@@ -38,6 +41,7 @@ exports.updateUser = (req, res) => {
 	}
 }
 
+// pour supprimer un utilisateur
 exports.deleteUser = (req, res) => {
 	const user = users.getUserById(req.params.id)
 	if (user) {

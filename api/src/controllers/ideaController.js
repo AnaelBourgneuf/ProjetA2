@@ -7,12 +7,13 @@ let ideas = IdeaRepository
 
 
 
-
+// pour recupererr la liste complete des idees
 exports.getIdeasList = (req, res) => {
 	res.send(ideas.getIdeas())
 	res.end()
 }
 
+// pour recuperer une idee specifique par son identifiant
 exports.getIdeaById = (req, res) => {
 	const idea = ideas.getIdeaById(req.params.id)
 	if (idea) {
@@ -23,21 +24,22 @@ exports.getIdeaById = (req, res) => {
 	res.end()
 }
 
+// pour ajouter une nouvelle idee
 exports.addIdea = (req, res) => {
-	//emailShouldBeAvailable(req.body.email)
 	res.send(ideas.addIdea(req.body))
 }
 
+// pour modifier les informations d'une idee
 exports.updateIdea = (req, res) => {
 	const idea = ideas.getIdeaById(req.params.id)
 	if (idea) {
-		//emailShouldBeAvailable(req, res)
 		res.status(200).send(ideas.updateIdea(req.params.id, req.body))
 	} else {
 		res.status(404).send('idea not found')
 	}
 }
 
+// pour supprimer une idee
 exports.deleteIdea = (req, res) => {
 	const idea = ideas.getIdeaById(req.params.id)
 	if (idea) {
