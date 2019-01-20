@@ -9,7 +9,7 @@ app.route('/')
 .get(getPromosList)
 .post(addPromo);
 
-app.route('/:promoID')
+app.route('/:id')
 .get(getPromoById)
 .put(updatePromo)
 .delete(deletePromo);

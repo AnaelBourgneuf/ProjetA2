@@ -9,7 +9,7 @@ app.route('/')
 	.get(getUsersList)
 	.post(addUser);
 
-app.route('/:userID')
+app.route('/:id')
 	.get(getUserById)
 	.put(updateUser)
 	.delete(deleteUser);

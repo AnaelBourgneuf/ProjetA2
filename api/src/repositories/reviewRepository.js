@@ -4,7 +4,7 @@ class ReviewRepository {
 
 	constructor () {
 		this.items = [
-			{ id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date().setFullYear(2019, 3, 10).setHours(10).setMinutes(10), adress: 'http://www.google.com/', promo: 1}
+			{ id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00'), adress: 'http://www.google.com/', promo: 1}
 		]
 	}
 

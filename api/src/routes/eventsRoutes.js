@@ -8,7 +8,7 @@ app.route('/')
 	.get(getEventsList)
 	.post(addEvent)
 
-app.route('/:eventID')
+app.route('/:id')
 	.get(getEventById)
 	.put(updateEvent)
 	.delete(deleteEvent);

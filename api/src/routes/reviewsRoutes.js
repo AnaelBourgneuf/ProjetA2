@@ -8,7 +8,7 @@ app.route('/')
 	.get(getReviewsList)
 	.post(addReview);
 
-app.route('/:reviewID')
+app.route('/:id')
 	.get(getReviewById)
 	.put(updateReview)
 	.delete(deleteReview);

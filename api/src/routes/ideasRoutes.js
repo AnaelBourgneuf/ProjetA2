@@ -10,7 +10,7 @@ app.route('/')
 	.get(getIdeasList)
 	.post(addIdea)
 
-app.route('/:userID')
+app.route('/:id')
 	.get(getIdeaById)
 	.put(updateIdea)
 	.delete(deleteIdea)

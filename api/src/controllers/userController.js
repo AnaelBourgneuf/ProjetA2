@@ -15,6 +15,7 @@ exports.getUsersList = (req, res) => {
 
 // pour recuperer un utilisateur specifique par son identifiant
 exports.getUserById = (req, res) => {
+	console.log(req.params)
 	const user = users.getUserById(req.params.id)
 	if (user) {
 		res.send(user)

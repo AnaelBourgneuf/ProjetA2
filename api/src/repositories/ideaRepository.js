@@ -4,9 +4,9 @@ class IdeaRepository {
 
 	constructor () {
 		this.items = [
-			{ id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date().setFullYear(2019, 3, 10).setHours(10).setMinutes(10), creator: 1},
-			{ id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', title: 'idea2', text: 'texte idea 2', dateTime: new Date().setFullYear(2019, 3, 12).setHours(12).setMinutes(0), creator: 1},
-			{ id: '488351f0-699a-4828-adba-4275c954efdb', title: 'idea3', text: 'texte idea 3', dateTime: new Date().setFullYear(2019, 3, 1).setHours(9).setMinutes(0), creator: 1}
+			{ id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date('March 10, 2019 10:10:00'), creator: 1},
+			{ id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', title: 'idea2', text: 'texte idea 2', dateTime: new Date('March 12, 2019 12:30:00'), creator: 1},
+			{ id: '488351f0-699a-4828-adba-4275c954efdb', title: 'idea3', text: 'texte idea 3', dateTime: new Date('March 1, 2019 09:00:00'), creator: 1}
 		]
 	}
 
