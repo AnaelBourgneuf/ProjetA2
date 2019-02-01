@@ -34,20 +34,32 @@ class UserRepository {
 	}
 
 	updateUser(id, user){
-		const { name, gender, age, email } = user
+		const { firstName, name, gender, birthD, alias, promo, email, isAdmin } = user
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
+			if (firstName) {
+				this.items[i].firstName = firstName
+			}
 			if (name) {
 				this.items[i].name = name
 			}
 			if (gender) {
 				this.items[i].gender = gender
 			}
-			if (age) {
-				this.items[i].age = age
+			if (birthD) {
+				this.items[i].birthD = birthD
+			}
+			if (alias) {
+				this.items[i].alias = alias
+			}
+			if (promo) {
+				this.items[i].promo = promo
 			}
 			if (email) {
 				this.items[i].email = email
+			}
+			if (isAdmin) {
+				this.items[i].isAdmin = isAdmin
 			}
 		}
 		return this.getUserById(id)

@@ -34,20 +34,20 @@ class EventRepository {
 	}
 
 	updateEvent(id, event){
-		const { name, gender, age, email } = event
+		const { title, dateTime, createDatetime, creator } = event
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
-			if (name) {
-				this.items[i].name = name
+			if (title) {
+				this.items[i].title = title
 			}
-			if (gender) {
-				this.items[i].gender = gender
+			if (dateTime) {
+				this.items[i].dateTime = dateTime
 			}
-			if (age) {
-				this.items[i].age = age
+			if (createDatetime) {
+				this.items[i].createDateTime = createDatetime
 			}
-			if (email) {
-				this.items[i].email = email
+			if (creator) {
+				this.items[i].creator = creator
 			}
 		}
 		return this.getEventById(id)
