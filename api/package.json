@@ -16,6 +16,7 @@
     "uuid-token-generator": "^1.0.0"
   },
   "devDependencies": {
+    "doctrine": "^3.0.0",
     "nodemon": "^1.18.9"
   }
 }
