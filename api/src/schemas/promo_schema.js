@@ -9,7 +9,7 @@ exports.registerPromoSchema = {
     annee: joi.date().timestamp('javascript').required()
 }
 
-exports.registerPromoSchema = {
+exports.UpdatePromoSchema = {
     name: joi.string().optional(),
 
     alias: joi.string().optional(),
