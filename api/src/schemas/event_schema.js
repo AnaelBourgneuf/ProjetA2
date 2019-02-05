@@ -21,4 +21,4 @@ exports.updateEventSchema = {
     description: joi.string().min(10).optional(),
 
     date: joi.date().timestamp('javascript').optional()
-}
+}.required().min(1)

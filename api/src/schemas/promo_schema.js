@@ -15,4 +15,4 @@ exports.registerPromoSchema = {
     alias: joi.string().optional(),
 
     annee: joi.date().timestamp('javascript').optional()
-}
+}.required().min(1)

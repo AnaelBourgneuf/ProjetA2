@@ -15,4 +15,4 @@ exports.updateReviewSchema = {
     description: joi.string().optionnal(),
 
     date: joi.date().timestamp("javascript").optionnal()
-}
+}.required().min(1)
