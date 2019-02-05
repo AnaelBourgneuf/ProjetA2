@@ -34,6 +34,7 @@ class UserRepository {
 	}
 
 	updateUser(id, user){
+		console.log("id : "+id+", user : "+user+"")
 		const { firstName, name, gender, birthD, alias, promo, email, isAdmin } = user
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
