@@ -15,7 +15,7 @@ exports.getEventsList = (req, res) => {
 
 // pour recuperer un evenement specifique par son identifiant
 exports.getEventById = (req, res) => {
-	const event = events.getUserById(req.params.id)
+	const event = events.getEventById(req.params.id)
 	if (event) {
 		res.send(event)
 	} else {

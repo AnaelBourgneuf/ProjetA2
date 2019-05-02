@@ -36,6 +36,7 @@ exports.updateUser = (req, res) => {
 	const user = users.getUserById(req.params.id)
 	if (user) {
 		//emailShouldBeAvailable(req, res)
+		console.log(req.body)
 		res.status(200).send(users.updateUser(req.params.id, req.body))
 	} else {
 		res.status(404).send('user not found')

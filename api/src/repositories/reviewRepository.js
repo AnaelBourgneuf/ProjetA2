@@ -13,7 +13,7 @@ class ReviewRepository {
 	}
 
 	getReviewById (id) {
-		console.log(id)
+		//console.log(id)
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
 			return this.items.find(el => el.id === id)

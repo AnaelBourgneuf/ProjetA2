@@ -1,5 +1,6 @@
 var chakram = require('chakram'),
     expect = chakram.expect
+//var mocha = require('mocha').current
 
 
 //------------------------------------------------------------------------------------------------
@@ -7,16 +8,16 @@ var chakram = require('chakram'),
 //------------------------------------------------------------------------------------------------
 
 var PromoData = {id: 1, name: 'Dev-A2', alias: 'Autistart+'}
-var UserData = {id: 1, firstName: 'Roger', name: 'Duchamp', birthD: '12/12/1212', alias: "Roger's", promo: PromoData, mail: 'prenom.nom@imie.fr', isAdmin: false}
+var UserData = {id: "3651ac54-d393-495b-b2ae-a26616de3fc4", firstName: 'Roger', name: 'Duchamp', birthD: '12/12/1212', alias: "Roger's", promo: 1, mail: 'prenom.nom@imie.fr', isAdmin: false}
 var EventData = {id: 1, title: "Jour de l'an", dateTime: "01/01/2019", createDateTime: '01/12/2018', users: [{user: UserData, joinDateTime: "11/12/2018 11:11:00"}]}
 var IdeaData = {id: 1, title: "Mon idée1", text: "Blablabla Blablabla Blablabla", dateTime: "9/12/2018 11:11:02", user: UserData}
-var ReviewData = {id: 1, title: "Module Api", dateTime: "14/12/2018 17:00:00", adress: "http://www.google.com/", promo: PromoData}
+var ReviewData = {id: 1, title: "Module Api", dateTime: "14/12/2018 17:00:00", adress: "http://www.google.com/", promo: 1}
 
 var expectedPromoSchema = {type: 'object', properties: {ID: {type: 'integer'}, Name: {type: 'string'}, Alias:{type: 'string'}}}
-var expectedUserSchema = {type: 'object', properties: {id: {type: 'integer'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: expectedPromoSchema,mail:{type: 'string'},isAdmin:{type: 'boolean'}}}
+var expectedUserSchema = {type: 'object', properties: {id: {type: 'integer'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'integer'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}}
 var expectedIdeaSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: expectedUserSchema}}
 var expectedEventSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: expectedUserSchema, joinDateTime: {type: 'string'}}}}}
-var expectedReviewSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: 'string'}, adress: {type: 'string'}, promo: expectedPromoSchema}}
+var expectedReviewSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: 'string'}, adress: {type: 'string'}, promo: {type: 'integer'}}}
 
 const urlSwagger = "http://virtserver.swaggerhub.com/AnaelBM/testApi/v1"
 const url = "http://127.0.0.1:3000"
