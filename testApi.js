@@ -34,7 +34,7 @@ var ReviewsData = [
 
 var NewUserData = { firstName: 'Jean', name: 'Valjean', gender: 'Male', birthD: new Date(818003483771).toString(), alias: 'JV', promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "jean.valjean@imie.fr", isAdmin: false}
 var UpdatedUserData = { isAdmin: true }
-var NewEventData = { title: 'Soiree Mousse', dateTime: new Date('May 18, 2019 20:30:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00').toString()},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00').toString()}]}
+var NewEventData = { title: 'Soiree Mousse', dateTime: new Date('May 18, 2019 20:30:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4" }
 var UpdatedEventData = { dateTime: new Date('March 8, 2019 10:30:00').toString() }
 var NewIdeaData = { title: 'idea5', text: 'texte idea 5', creator: '3651ac54-d393-495b-b2ae-a26616de3fc4' }
 var UpdatedIdeaData = { text: 'voiçi mon idée' }
