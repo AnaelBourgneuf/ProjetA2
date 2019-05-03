@@ -9,7 +9,7 @@ let reviews = ReviewRepository
 
 // pour recuperer la liste complete des reviews
 exports.getReviewsList = (req, res) => {
-	res.send(reviews.getReviews())
+	res.status(200).send(reviews.getReviews())
 	res.end()
 }
 
@@ -17,7 +17,7 @@ exports.getReviewsList = (req, res) => {
 exports.getReviewById = (req, res) => {
 	const review = reviews.getReviewById(req.params.id)
 	if (review) {
-		res.send(review)
+		res.status(200).send(review)
 	} else {
 		res.status(404).send('review not found')
 	}
@@ -26,14 +26,14 @@ exports.getReviewById = (req, res) => {
 
 // pour ajouter une nouvelle review
 exports.addReview = (req, res) => {
-	res.send(reviews.addReview(req.body))
+	res.status(201).send(reviews.addReview(req.body))
 }
 
 // pour modifier les informations d'une review
 exports.updateReview = (req, res) => {
 	const review = reviews.getReviewById(req.params.id)
 	if (review) {
-		res.status(200).send(reviews.updateReview(req.params.id, req.body))
+		res.status(202).send(reviews.updateReview(req.params.id, req.body))
 	} else {
 		res.status(404).send('review not found')
 	}
@@ -44,7 +44,7 @@ exports.deleteReview = (req, res) => {
 	const review = reviews.getReviewById(req.params.id)
 	if (review) {
 		reviews.deleteReview(req.params.id)
-		res.status(204).send('review deleted')
+		res.status(200).send('review deleted')
 	} else {
 		res.status(404).send('review not found')
 	}

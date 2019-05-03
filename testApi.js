@@ -31,41 +31,53 @@ var ReviewsData = [
   { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00').toString(), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
 ]
 
+
+var NewUserData = { firstName: 'Jean', name: 'Valjean', gender: 'Male', birthD: new Date(818003483771).toString(), alias: 'JV', promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "jean.valjean@imie.fr", isAdmin: false}
+var UpdatedUserData = { isAdmin: true }
+var NewEventData = { title: 'Soiree Mousse', dateTime: new Date('May 18, 2019 20:30:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00').toString()},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00').toString()}]}
+var UpdatedEventData = { dateTime: new Date('March 8, 2019 10:30:00').toString() }
+var NewIdeaData = { title: 'idea5', text: 'texte idea 5', creator: '3651ac54-d393-495b-b2ae-a26616de3fc4' }
+var UpdatedIdeaData = { text: 'voiçi mon idée' }
+var NewPromoData = { name: 'Dev-A4', alias: 'les viocs' }
+var UpdatedPromoData = { alias: 'autistart' }
+var NewReviewData = { title: 'Module théatre', adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4' }
+var UpdatedReviewData = { adress: 'http://www.google.com/1' }
+
 var PromoData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', name: 'IT-Start', alias: null}
 var UserData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date(818003483771).toString(), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: false}
-var EventData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Pokemon Go', dateTime: new Date('February 8, 2019 10:30:00'), createDateTime: new Date('January 18, 2019 10:10:00'), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00')},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00')}]}
-var IdeaData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date('March 10, 2019 10:10:00'), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
-var ReviewData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00'), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
+var EventData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Pokemon Go', dateTime: new Date('February 8, 2019 10:30:00').toString(), createDateTime: new Date('January 18, 2019 10:10:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00').toString()},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00').toString()}]}
+var IdeaData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date('March 10, 2019 10:10:00').toString(), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
+var ReviewData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00').toString(), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
 
 var expectedPromosSchema = [
-    {type: 'object', properties: {ID: {type: 'integer'}, Name: {type: 'string'}, Alias:{type: 'string'}}},
-    {type: 'object', properties: {ID: {type: 'integer'}, Name: {type: 'string'}, Alias:{type: 'string'}}},
-    {type: 'object', properties: {ID: {type: 'integer'}, Name: {type: 'string'}, Alias:{type: 'string'}}}
+    {type: 'object', properties: {ID: {type: 'string'}, Name: {type: 'string'}, Alias:{type: 'string'}}},
+    {type: 'object', properties: {ID: {type: 'string'}, Name: {type: 'string'}, Alias:{type: 'string'}}},
+    {type: 'object', properties: {ID: {type: 'string'}, Name: {type: 'string'}, Alias:{type: 'string'}}}
 ]
 var expectedUsersSchema = [
-    {type: 'object', properties: {id: {type: 'integer'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'integer'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}},
-    {type: 'object', properties: {id: {type: 'integer'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'integer'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}},
-    {type: 'object', properties: {id: {type: 'integer'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'integer'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}}
+    {type: 'object', properties: {id: {type: 'string'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'string'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}},
+    {type: 'object', properties: {id: {type: 'string'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'string'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}},
+    {type: 'object', properties: {id: {type: 'string'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'string'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}}
  ]
 var expectedIdeasSchema = [
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}},
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}},
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}}
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}},
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}},
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}}
 ]
 var expectedEventsSchema = [
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}},
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}},
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}}
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}},
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}},
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}}
 ]
 var expectedReviewsSchema = [
-    {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: 'string'}, adress: {type: 'string'}, promo: {type: 'integer'}}}
+    {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, dateTime: {type: 'string'}, adress: {type: 'string'}, promo: {type: 'string'}}}
 ]
 
-var expectedPromoSchema = {type: 'object', properties: {ID: {type: 'integer'}, Name: {type: 'string'}, Alias:{type: 'string'}}}
-var expectedUserSchema = {type: 'object', properties: {id: {type: 'integer'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'integer'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}}
-var expectedIdeaSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}}
-var expectedEventSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}}
-var expectedReviewSchema = {type: 'object', properties: {id: {type: 'integer'}, title: {type: 'string'}, dateTime: {type: 'string'}, adress: {type: 'string'}, promo: {type: 'integer'}}}
+var expectedPromoSchema = {type: 'object', properties: {ID: {type: 'string'}, Name: {type: 'string'}, Alias:{type: 'string'}}}
+var expectedUserSchema = {type: 'object', properties: {id: {type: 'string'}, firstName: {type: 'string'}, name:{type: 'string'}, birthD:{type: 'string'}, alias:{type: 'string'}, promo: {type: 'string'},mail:{type: 'string'},isAdmin:{type: 'boolean'}}}
+var expectedIdeaSchema = {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, text:{type: 'string'}, dateTime:{type: 'string'}, users: {type: 'string'}}}
+var expectedEventSchema = {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, dateTime: {type: "string"}, createDateTime: {type: 'string'}, users: {type: 'array', items: {user: {type: 'string'}, joinDateTime: {type: 'string'}}}}}
+var expectedReviewSchema = {type: 'object', properties: {id: {type: 'string'}, title: {type: 'string'}, dateTime: {type: 'string'}, adress: {type: 'string'}, promo: {type: 'string'}}}
 
 const urlSwagger = "http://virtserver.swaggerhub.com/AnaelBM/testApi/v1"
 const url = "http://127.0.0.1:3000"
@@ -79,7 +91,7 @@ const url = "http://127.0.0.1:3000"
 //--------------------------------
 describe("HTTP assertions : Retrive all Users", function () {
   it("It should return HTTP_200 : list with users ", function () {
-    var response = chakram.get(url+"/Users");
+    var response = chakram.get(url+"/users");
     expect(response).to.have.status(200);
     ////expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedUsersSchema);
@@ -92,7 +104,7 @@ describe("HTTP assertions : Retrive all Users", function () {
 //--------------------------------
 describe("HTTP assertions : Retrive one User", function () {
   it("It should return HTTP_200 : user ", function () {
-    var response = chakram.get(url+"/Users/3651ac54-d393-495b-b2ae-a26616de3fc4");
+    var response = chakram.get(url+"/users/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedUserSchema);
@@ -105,11 +117,11 @@ describe("HTTP assertions : Retrive one User", function () {
 //--------------------------------
 describe("HTTP assertions : Add one User", function () {
   it("It should return HTTP_201 : user ", function () {
-    var response = chakram.post(url+"/Users", UserData);
+    var response = chakram.post(url+"/users", NewUserData);
     expect(response).to.have.status(201);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedUserSchema);
-    expect(response).to.have.json(UserData);
+    //expect(response).to.have.json(UserData);
     return chakram.wait();
   });
 });
@@ -118,11 +130,11 @@ describe("HTTP assertions : Add one User", function () {
 //--------------------------------
 describe("HTTP assertions : Update one User", function () {
   it("It should return HTTP_202 : user ", function () {
-    var response = chakram.put(url+"/Users/1", UserData);
+    var response = chakram.put(url+"/Users/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedUserData);
     expect(response).to.have.status(202);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedUserSchema);
-    expect(response).to.have.json(UserData);
+    //expect(response).to.have.json(UserData);
     return chakram.wait();
   });
 });
@@ -131,7 +143,7 @@ describe("HTTP assertions : Update one User", function () {
 //--------------------------------
 describe("HTTP assertions : Delete one User", function () {
   it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/Users/1");
+    var response = chakram.delete(url+"/Users/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     return chakram.wait();
@@ -165,7 +177,7 @@ describe("HTTP assertions : Retrive all Events", function () {
 //--------------------------------
 describe("HTTP assertions : Retrive one Event", function () {
   it("It should return HTTP_200 : event ", function () {
-    var response = chakram.get(url+"/Events/1");
+    var response = chakram.get(url+"/Events/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedEventSchema);
@@ -178,11 +190,11 @@ describe("HTTP assertions : Retrive one Event", function () {
 //--------------------------------
 describe("HTTP assertions : Add one Event", function () {
   it("It should return HTTP_201 : event ", function () {
-    var response = chakram.post(url+"/Events", EventData);
+    var response = chakram.post(url+"/Events", NewEventData);
     expect(response).to.have.status(201);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedEventSchema);
-    expect(response).to.have.json(EventData);
+    //expect(response).to.have.json(EventData);
     return chakram.wait();
   });
 });
@@ -191,11 +203,11 @@ describe("HTTP assertions : Add one Event", function () {
 //--------------------------------
 describe("HTTP assertions : Update one Event", function () {
   it("It should return HTTP_202 : event ", function () {
-    var response = chakram.put(url+"/Events/1", EventData);
+    var response = chakram.put(url+"/Events/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedEventData);
     expect(response).to.have.status(202);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedEventSchema);
-    expect(response).to.have.json(EventData);
+    //expect(response).to.have.json(EventData);
     return chakram.wait();
   });
 });
@@ -204,7 +216,7 @@ describe("HTTP assertions : Update one Event", function () {
 //--------------------------------
 describe("HTTP assertions : Delete one Event", function () {
   it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/Events/1");
+    var response = chakram.delete(url+"/Events/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     return chakram.wait();
@@ -237,7 +249,7 @@ describe("HTTP assertions : Retrive all Ideas", function () {
 //--------------------------------
 describe("HTTP assertions : Retrive one Idea", function () {
   it("It should return HTTP_200 : idea ", function () {
-    var response = chakram.get(url+"/Ideas/1");
+    var response = chakram.get(url+"/Ideas/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedIdeaSchema);
@@ -250,11 +262,11 @@ describe("HTTP assertions : Retrive one Idea", function () {
 //--------------------------------
 describe("HTTP assertions : Add one Idea", function () {
   it("It should return HTTP_201 : idea ", function () {
-    var response = chakram.post(url+"/Ideas", IdeaData);
+    var response = chakram.post(url+"/Ideas", NewIdeaData);
     expect(response).to.have.status(201);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedIdeaSchema);
-    expect(response).to.have.json(IdeaData);
+    //expect(response).to.have.json(IdeaData);
     return chakram.wait();
   });
 });
@@ -263,11 +275,11 @@ describe("HTTP assertions : Add one Idea", function () {
 //--------------------------------
 describe("HTTP assertions : Update one Idea", function () {
   it("It should return HTTP_202 : idea ", function () {
-    var response = chakram.put(url+"/Ideas/1", IdeaData);
+    var response = chakram.put(url+"/Ideas/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedIdeaData);
     expect(response).to.have.status(202);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedIdeaSchema);
-    expect(response).to.have.json(IdeaData);
+    //expect(response).to.have.json(IdeaData);
     return chakram.wait();
   });
 });
@@ -276,7 +288,7 @@ describe("HTTP assertions : Update one Idea", function () {
 //--------------------------------
 describe("HTTP assertions : Delete one Idea", function () {
   it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/Ideas/1");
+    var response = chakram.delete(url+"/Ideas/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     return chakram.wait();
@@ -309,7 +321,7 @@ describe("HTTP assertions : Retrive all Promos", function () {
 //--------------------------------
 describe("HTTP assertions : Retrive one Promo", function () {
   it("It should return HTTP_200 : promo ", function () {
-    var response = chakram.get(url+"/Promos/1");
+    var response = chakram.get(url+"/Promos/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedPromoSchema);
@@ -322,11 +334,11 @@ describe("HTTP assertions : Retrive one Promo", function () {
 //--------------------------------
 describe("HTTP assertions : Add one Promo", function () {
   it("It should return HTTP_201 : promo ", function () {
-    var response = chakram.post(url+"/Promos", PromoData);
+    var response = chakram.post(url+"/Promos", NewPromoData);
     expect(response).to.have.status(201);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedPromoSchema);
-    expect(response).to.have.json(PromoData);
+    //expect(response).to.have.json(PromoData);
     return chakram.wait();
   });
 });
@@ -335,11 +347,11 @@ describe("HTTP assertions : Add one Promo", function () {
 //--------------------------------
 describe("HTTP assertions : Update one Promo", function () {
   it("It should return HTTP_202 : promo ", function () {
-    var response = chakram.put(url+"/Promos/1", PromoData);
+    var response = chakram.put(url+"/Promos/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedPromoData);
     expect(response).to.have.status(202);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedPromoSchema);
-    expect(response).to.have.json(PromoData);
+    //expect(response).to.have.json(PromoData);
     return chakram.wait();
   });
 });
@@ -348,7 +360,7 @@ describe("HTTP assertions : Update one Promo", function () {
 //--------------------------------
 describe("HTTP assertions : Delete one Promo", function () {
   it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/Promos/1");
+    var response = chakram.delete(url+"/Promos/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     return chakram.wait();
@@ -381,7 +393,7 @@ describe("HTTP assertions : Retrive all Reviews", function () {
 //--------------------------------
 describe("HTTP assertions : Retrive one Review", function () {
   it("It should return HTTP_200 : review ", function () {
-    var response = chakram.get(url+"/Reviews/1");
+    var response = chakram.get(url+"/Reviews/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedReviewSchema);
@@ -394,11 +406,11 @@ describe("HTTP assertions : Retrive one Review", function () {
 //--------------------------------
 describe("HTTP assertions : Add one Review", function () {
   it("It should return HTTP_201 : review ", function () {
-    var response = chakram.post(url+"/Reviews", ReviewData);
+    var response = chakram.post(url+"/Reviews", NewReviewData);
     expect(response).to.have.status(201);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedReviewSchema);
-    expect(response).to.have.json(ReviewData);
+    //expect(response).to.have.json(ReviewData);
     return chakram.wait();
   });
 });
@@ -408,11 +420,11 @@ describe("HTTP assertions : Add one Review", function () {
 describe("HTTP assertions : Update one Review", function () {
   it("It should return HTTP_202 : review ", function () {
 
-    var response = chakram.put(url+"/Reviews/1", ReviewData);
+    var response = chakram.put(url+"/Reviews/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedReviewData);
     expect(response).to.have.status(202);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedReviewSchema);
-    expect(response).to.have.json(ReviewData);
+    //expect(response).to.have.json(ReviewData);
     return chakram.wait();
   });
 });
@@ -421,7 +433,7 @@ describe("HTTP assertions : Update one Review", function () {
 //--------------------------------
 describe("HTTP assertions : Delete one Review", function () {
   it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/Reviews/1");
+    var response = chakram.delete(url+"/Reviews/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     return chakram.wait();

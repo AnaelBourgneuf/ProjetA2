@@ -9,7 +9,7 @@ let ideas = IdeaRepository
 
 // pour recupererr la liste complete des idees
 exports.getIdeasList = (req, res) => {
-	res.send(ideas.getIdeas())
+	res.status(200).send(ideas.getIdeas())
 	res.end()
 }
 
@@ -17,7 +17,7 @@ exports.getIdeasList = (req, res) => {
 exports.getIdeaById = (req, res) => {
 	const idea = ideas.getIdeaById(req.params.id)
 	if (idea) {
-		res.send(idea)
+		res.status(200).send(idea)
 	} else {
 		res.status(404).send('idea not found')
 	}
@@ -26,14 +26,14 @@ exports.getIdeaById = (req, res) => {
 
 // pour ajouter une nouvelle idee
 exports.addIdea = (req, res) => {
-	res.send(ideas.addIdea(req.body))
+	res.status(201).send(ideas.addIdea(req.body))
 }
 
 // pour modifier les informations d'une idee
 exports.updateIdea = (req, res) => {
 	const idea = ideas.getIdeaById(req.params.id)
 	if (idea) {
-		res.status(200).send(ideas.updateIdea(req.params.id, req.body))
+		res.status(202).send(ideas.updateIdea(req.params.id, req.body))
 	} else {
 		res.status(404).send('idea not found')
 	}
@@ -44,7 +44,7 @@ exports.deleteIdea = (req, res) => {
 	const idea = ideas.getIdeaById(req.params.id)
 	if (idea) {
 		ideas.deleteIdea(req.params.id)
-		res.status(204).send('idea deleted')
+		res.status(200).send('idea deleted')
 	} else {
 		res.status(404).send('idea not found')
 	}

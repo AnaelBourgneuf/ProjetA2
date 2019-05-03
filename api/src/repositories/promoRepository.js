@@ -40,7 +40,7 @@ class PromoRepository {
 			if (name) {
 				this.items[i].name = name
 			}
-			if (gender) {
+			if (alias) {
 				this.items[i].alias = alias
 			}
 		}
