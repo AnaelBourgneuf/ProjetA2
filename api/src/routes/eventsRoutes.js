@@ -1,7 +1,7 @@
 const {Router} = require("express")
 const app = module.exports = Router()
 
-const {addEvent, getEventById, getEventsList, updateEvent, deleteEvent, addUser} = require('../controllers/eventController')
+const {addEvent, getEventById, getEventsList, updateEvent, deleteEvent, addUser, deleteUser} = require('../controllers/eventController')
 
 // Déclaration de sroutes pour /Events
 app.route('/')
@@ -13,5 +13,6 @@ app.route('/:id')
 	.put(updateEvent)
 	.delete(deleteEvent);
 
-app.route('/add/:id')
+app.route('/users/:id')
 	.put(addUser)
+	.delete(deleteUser)

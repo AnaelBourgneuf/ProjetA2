@@ -67,3 +67,18 @@ exports.addUser = (req, res) => {
 		res.status(404).send('event not found')
 	}
 }
+
+// pour desinscrire un utilisateur d'un evenement
+exports.deleteUser = (req, res) => {
+	const event = events.getEventById(req.params.id)
+	const user = users.getUserById(req.body.userId)
+	if (event){
+		if (user){
+			res.status(202).send(events.deleteUser(req.params.id, req.body.userId))
+		} else {
+			res.status(404).send('user not found')
+		}
+	} else {
+		res.status(404).send('event not found')
+	}
+}

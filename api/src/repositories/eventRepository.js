@@ -73,6 +73,21 @@ class EventRepository {
 		}
 		return this.getEventById(id)
 	}
+
+	deleteUser(id, userId){
+		const infos = {
+			user : userId,
+			joinDateTime : new Date().toString()
+		}
+		const i = this.items.findIndex(el => el.id === id)
+		if (i !== -1) {
+			const j = this.items[i].users.findIndex(el => el.user === userId)
+			if (j !== -1) {
+				this.items[i].users.splice(j, 1)
+			}
+		}
+		return this.getEventById(id)
+	}
 }
 
 module.exports = new EventRepository();
