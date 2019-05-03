@@ -27,7 +27,8 @@ class EventRepository {
 	addEvent(event){
 		const record = {
 			id: uuid(),
-			createDateTime: new Date(),
+			createDateTime: new Date().toString(),
+			users: [],
 			... event
 		}
 		this.items.push(record)
@@ -59,6 +60,18 @@ class EventRepository {
 		if (i !== -1){
 			this.items.splice(i, 1)
 		}
+	}
+
+	addUser(id, userId){
+		const infos = {
+			user : userId,
+			joinDateTime : new Date().toString()
+		}
+		const i = this.items.findIndex(el => el.id === id)
+		if (i !== -1) {
+			this.items[i].users.push(infos)
+		}
+		return this.getEventById(id)
 	}
 }
 

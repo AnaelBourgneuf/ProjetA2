@@ -1,8 +1,10 @@
 const EventRepository = require('../repositories/eventRepository')
+const UserRepository = require('../repositories/userRepository')
 
 const Joi = require('joi')
 
 let events = EventRepository
+let users = UserRepository
 
 
 
@@ -49,4 +51,19 @@ exports.deleteEvent = (req, res) => {
 		res.status(404).send('event not found')
 	}
 	res.end()
+}
+
+// pour inscrire un utilisateur a un evenement
+exports.addUser = (req, res) => {
+	const event = events.getEventById(req.params.id)
+	const user = users.getUserById(req.body.userId)
+	if (event){
+		if (user){
+			res.status(202).send(events.addUser(req.params.id, req.body.userId))
+		} else {
+			res.status(404).send('user not found')
+		}
+	} else {
+		res.status(404).send('event not found')
+	}
 }
