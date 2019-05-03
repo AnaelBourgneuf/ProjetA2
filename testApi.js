@@ -13,26 +13,26 @@ var PromosData = [
   { id: '488351f0-699a-4828-adba-4275c954efdb', name: 'Dev-A3', alias: null}
 ]
 var UsersData = [
-  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date().setFullYear(1995, 11, 3), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: false},
-  { id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', firstName: 'Bob', name: 'Leponge', gender: 'male', birthD: new Date().setFullYear(1990, 3, 1), alias: null, promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "bob.leponge@gmail.com", isAdmin: false},
-  { id: '488351f0-699a-4828-adba-4275c954efdb', firstName: 'Charlie', name: 'Ouest', gender: 'male', birthD: new Date().setFullYear(2001, 9, 30), alias: "Charlot", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "charlie.ouest@gmail.com", isAdmin: false},
+  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date(818003483771).toString(), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: false},
+  { id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', firstName: 'Bob', name: 'Leponge', gender: 'male', birthD: new Date(638979083772).toString(), alias: null, promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "bob.leponge@gmail.com", isAdmin: false},
+  { id: '488351f0-699a-4828-adba-4275c954efdb', firstName: 'Charlie', name: 'Ouest', gender: 'male', birthD: new Date(1004454683772).toString(), alias: "Charlot", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "charlie.ouest@gmail.com", isAdmin: false},
 ]
 var EventsData = [
-  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Pokemon Go', dateTime: new Date('February 8, 2019 10:30:00'), createDateTime: new Date('January 18, 2019 10:10:00'), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00')},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00')}]},
-  { id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', title: 'Pizza', dateTime: new Date('March 10, 2019 10:10:00'), createDateTime: new Date('January 3, 2019 13:45:00'), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00')} ,{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00')}]},
-  { id: '488351f0-699a-4828-adba-4275c954efdb', title: 'KFC du Mardi', dateTime: new Date('February 5, 2019 10:9:00'), createDateTime: new Date('January 5, 2019 16:00:00'), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00')} ,{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00')}]}
+  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Pokemon Go', dateTime: new Date('February 8, 2019 10:30:00').toString(), createDateTime: new Date('January 18, 2019 10:10:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00').toString()},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00').toString()}]},
+  { id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', title: 'Pizza', dateTime: new Date('March 10, 2019 10:10:00').toString(), createDateTime: new Date('January 3, 2019 13:45:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00').toString()} ,{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00').toString()}]},
+  { id: '488351f0-699a-4828-adba-4275c954efdb', title: 'KFC du Mardi', dateTime: new Date('February 5, 2019 10:9:00').toString(), createDateTime: new Date('January 5, 2019 16:00:00').toString(), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00').toString()} ,{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00').toString()}]}
 ]
 var IdeasData = [
-  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date('March 10, 2019 10:10:00'), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'},
-  { id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', title: 'idea2', text: 'texte idea 2', dateTime: new Date('March 12, 2019 12:30:00'), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'},
-  { id: '488351f0-699a-4828-adba-4275c954efdb', title: 'idea3', text: 'texte idea 3', dateTime: new Date('March 1, 2019 09:00:00'), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
+  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date('March 10, 2019 10:10:00').toString(), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'},
+  { id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', title: 'idea2', text: 'texte idea 2', dateTime: new Date('March 12, 2019 12:30:00').toString(), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'},
+  { id: '488351f0-699a-4828-adba-4275c954efdb', title: 'idea3', text: 'texte idea 3', dateTime: new Date('March 1, 2019 09:00:00').toString(), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
 ]
 var ReviewsData = [
-  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00'), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
+  { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00').toString(), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
 ]
 
 var PromoData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', name: 'IT-Start', alias: null}
-var UserData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date().setFullYear(1995, 11, 3), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: false}
+var UserData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date(818003483771).toString(), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: false}
 var EventData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Pokemon Go', dateTime: new Date('February 8, 2019 10:30:00'), createDateTime: new Date('January 18, 2019 10:10:00'), creator: "3651ac54-d393-495b-b2ae-a26616de3fc4", users: [{user: "3651ac54-d393-495b-b2ae-a26616de3fc4", joinDateTime: new Date('February 3, 2019 10:9:00')},{user: "b66245cd-c1db-48dc-8c26-1c3ef8349175", joinDateTime: new Date('February 3, 2019 10:9:00')}]}
 var IdeaData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'idea1', text: 'texte idea 1', dateTime: new Date('March 10, 2019 10:10:00'), creator: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
 var ReviewData = { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00'), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
@@ -82,8 +82,8 @@ describe("HTTP assertions : Retrive all Users", function () {
     var response = chakram.get(url+"/Users");
     expect(response).to.have.status(200);
     ////expect(response).to.have.header("content-type", "application/json");
-    expect(response).to.have.schema(expectedUserSchema);
-    expect(response).to.have.json(UserData);
+    expect(response).to.have.schema(expectedUsersSchema);
+    expect(response).to.have.json(UsersData);
     return chakram.wait();
   });
 });
@@ -92,7 +92,7 @@ describe("HTTP assertions : Retrive all Users", function () {
 //--------------------------------
 describe("HTTP assertions : Retrive one User", function () {
   it("It should return HTTP_200 : user ", function () {
-    var response = chakram.get(url+"/Users/1");
+    var response = chakram.get(url+"/Users/3651ac54-d393-495b-b2ae-a26616de3fc4");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedUserSchema);
@@ -154,8 +154,8 @@ describe("HTTP assertions : Retrive all Events", function () {
     var response = chakram.get(url+"/Events");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json"); 
-    expect(response).to.have.schema(expectedEventSchema);
-    expect(response).to.have.json(EventData);
+    expect(response).to.have.schema(expectedEventsSchema);
+    expect(response).to.have.json(EventsData);
     return chakram.wait();
   });
 });
@@ -227,8 +227,8 @@ describe("HTTP assertions : Retrive all Ideas", function () {
     var response = chakram.get(url+"/Ideas");
     expect(response).to.have.status(200);
     //expect(response).to.have.header("content-type", "application/json");
-    expect(response).to.have.schema(expectedIdeaSchema);
-    expect(response).to.have.json(IdeaData);
+    expect(response).to.have.schema(expectedIdeasSchema);
+    expect(response).to.have.json(IdeasData);
     return chakram.wait();
   });
 });
