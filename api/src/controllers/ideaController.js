@@ -1,8 +1,10 @@
 const IdeaRepository = require('../repositories/ideaRepository')
+const UserRepository = require('../repositories/userRepository')
 
 const Joi = require('joi')
 
 let ideas = IdeaRepository
+let users = UserRepository
 
 
 
@@ -49,4 +51,34 @@ exports.deleteIdea = (req, res) => {
 		res.status(404).send('idea not found')
 	}
 	res.end()
+}
+
+// pour inscrire un utilisateur a une idee
+exports.addUser = (req, res) => {
+	const event = ideas.getIdeaById(req.params.id)
+	const user = users.getUserById(req.body.userId)
+	if (event){
+		if (user){
+			res.status(202).send(ideas.addUser(req.params.id, req.body.userId))
+		} else {
+			res.status(404).send('user not found')
+		}
+	} else {
+		res.status(404).send('event not found')
+	}
+}
+
+// pour desinscrire un utilisateur d'une idee
+exports.subUser = (req, res) => {
+	const event = ideas.getIdeaById(req.params.id)
+	const user = users.getUserById(req.body.userId)
+	if (event){
+		if (user){
+			res.status(202).send(ideas.subUser(req.params.id, req.body.userId))
+		} else {
+			res.status(404).send('user not found')
+		}
+	} else {
+		res.status(404).send('event not found')
+	}
 }

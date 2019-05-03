@@ -1,7 +1,5 @@
 const {Router} = require("express")
-const controller = require('../controllers/ideaController')
-
-const {addIdea, getIdeaById, getIdeasList, updateIdea, deleteIdea} = require('../controllers/ideaController')
+const {addIdea, getIdeaById, getIdeasList, updateIdea, deleteIdea, addUser, subUser} = require('../controllers/ideaController')
 
 const app = module.exports = Router()
 
@@ -14,3 +12,7 @@ app.route('/:id')
 	.get(getIdeaById)
 	.put(updateIdea)
 	.delete(deleteIdea)
+
+app.route('/users/:id')
+	.put(addUser)
+	.delete(subUser)
