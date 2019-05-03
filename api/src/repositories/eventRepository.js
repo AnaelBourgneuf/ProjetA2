@@ -69,7 +69,10 @@ class EventRepository {
 		}
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
-			this.items[i].users.push(infos)
+			const j = this.items[i].users.findIndex(el => el.user === userId)
+			if (j === -1) {
+				this.items[i].users.push(infos)
+			}
 		}
 		return this.getEventById(id)
 	}
