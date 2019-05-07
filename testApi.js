@@ -31,7 +31,7 @@ var ReviewsData = [
   { id: '3651ac54-d393-495b-b2ae-a26616de3fc4', title: 'Module API', dateTime: new Date('March 10, 2019 10:10:00').toString(), adress: 'http://www.google.com/', promo: '3651ac54-d393-495b-b2ae-a26616de3fc4'}
 ]
 
-var userToAdd = { user: "b66245cd-c1db-48dc-8c26-1c3ef8349175" }
+var userToAdd = { userId: "b66245cd-c1db-48dc-8c26-1c3ef8349175" }
 
 var NewUserData = { firstName: 'Jean', name: 'Valjean', gender: 'Male', birthD: new Date(818003483771).toString(), alias: 'JV', promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "jean.valjean@imie.fr", isAdmin: false}
 var UpdatedUserData = { isAdmin: true }
@@ -155,101 +155,6 @@ describe("HTTP assertions : Delete one User", function () {
 
 
 
-//------------------------------------------------------------------------------------------------
-//                        Tests sur /Events
-//------------------------------------------------------------------------------------------------
-
-
-//          Retrive all Events
-//--------------------------------
-describe("HTTP assertions : Retrive all Events", function () {
-  it("It should return HTTP_200 : list with events ", function () {
-    var response = chakram.get(url+"/events");
-    expect(response).to.have.status(200);
-    //expect(response).to.have.header("content-type", "application/json"); 
-    expect(response).to.have.schema(expectedEventsSchema);
-    expect(response).to.have.json(EventsData);
-    return chakram.wait();
-  });
-});
-
-
-//          Retrive one Event
-//--------------------------------
-describe("HTTP assertions : Retrive one Event", function () {
-  it("It should return HTTP_200 : event ", function () {
-    var response = chakram.get(url+"/events/3651ac54-d393-495b-b2ae-a26616de3fc4");
-    expect(response).to.have.status(200);
-    //expect(response).to.have.header("content-type", "application/json");
-    expect(response).to.have.schema(expectedEventSchema);
-    expect(response).to.have.json(EventData);
-    return chakram.wait();
-  });
-});
-
-//          Add one Event
-//--------------------------------
-describe("HTTP assertions : Add one Event", function () {
-  it("It should return HTTP_201 : event ", function () {
-    var response = chakram.post(url+"/events", NewEventData);
-    expect(response).to.have.status(201);
-    //expect(response).to.have.header("content-type", "application/json");
-    expect(response).to.have.schema(expectedEventSchema);
-    //expect(response).to.have.json(EventData);
-    return chakram.wait();
-  });
-});
-
-//          Update one Event
-//--------------------------------
-describe("HTTP assertions : Update one Event", function () {
-  it("It should return HTTP_202 : event ", function () {
-    var response = chakram.put(url+"/events/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedEventData);
-    expect(response).to.have.status(202);
-    //expect(response).to.have.header("content-type", "application/json");
-    expect(response).to.have.schema(expectedEventSchema);
-    //expect(response).to.have.json(EventData);
-    return chakram.wait();
-  });
-});
-
-//          Delete one Event
-//--------------------------------
-describe("HTTP assertions : Delete one Event", function () {
-  it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/events/3651ac54-d393-495b-b2ae-a26616de3fc4");
-    expect(response).to.have.status(200);
-    //expect(response).to.have.header("content-type", "application/json");
-    return chakram.wait();
-  });
-});
-
-
-//          Add one user to an Event
-//--------------------------------
-describe("HTTP assertions : Delete one Event", function () {
-  it("It should return HTTP_200", function () {
-    var response = chakram.put(url+"/events/users/3651ac54-d393-495b-b2ae-a26616de3fc4", userToAdd);
-    expect(response).to.have.status(202);
-    expect(response).to.have.schema(expectedEventSchemaAfterAdd);
-    //expect(response).to.have.header("content-type", "application/json");
-    return chakram.wait();
-  });
-});
-
-//          Delete one user from an Event
-//--------------------------------
-describe("HTTP assertions : Delete one Event", function () {
-  it("It should return HTTP_200", function () {
-    var response = chakram.delete(url+"/events/users/3651ac54-d393-495b-b2ae-a26616de3fc4", userToAdd);
-    expect(response).to.have.status(202);
-    expect(response).to.have.schema(expectedEventSchema);
-    //expect(response).to.have.header("content-type", "application/json");
-    return chakram.wait();
-  });
-});
-
-
 
 //------------------------------------------------------------------------------------------------
 //                        Tests sur /Ideas
@@ -304,6 +209,31 @@ describe("HTTP assertions : Update one Idea", function () {
     //expect(response).to.have.header("content-type", "application/json");
     expect(response).to.have.schema(expectedIdeaSchema);
     //expect(response).to.have.json(IdeaData);
+    return chakram.wait();
+  });
+});
+
+
+//          Add one user to an Idea
+//--------------------------------
+describe("HTTP assertions : Add one user to an Idea", function () {
+  it("It should return HTTP_202", function () {
+    var response = chakram.put(url+"/ideas/users/3651ac54-d393-495b-b2ae-a26616de3fc4", userToAdd);
+    expect(response).to.have.status(202);
+    expect(response).to.have.schema(expectedEventSchema);
+    //expect(response).to.have.header("content-type", "application/json");
+    return chakram.wait();
+  });
+});
+
+//          Delete one user from an Idea
+//--------------------------------
+describe("HTTP assertions : Delete one user from an Idea", function () {
+  it("It should return HTTP_202", function () {
+    var response = chakram.delete(url+"/ideas/users/3651ac54-d393-495b-b2ae-a26616de3fc4", userToAdd);
+    expect(response).to.have.status(202);
+    expect(response).to.have.schema(expectedEventSchema);
+    //expect(response).to.have.header("content-type", "application/json");
     return chakram.wait();
   });
 });
@@ -463,3 +393,100 @@ describe("HTTP assertions : Delete one Review", function () {
     return chakram.wait();
   });
 });
+
+//------------------------------------------------------------------------------------------------
+//                        Tests sur /Events
+//------------------------------------------------------------------------------------------------
+
+
+//          Retrive all Events
+//--------------------------------
+describe("HTTP assertions : Retrive all Events", function () {
+  it("It should return HTTP_200 : list with events ", function () {
+    var response = chakram.get(url+"/events");
+    expect(response).to.have.status(200);
+    //expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedEventsSchema);
+    expect(response).to.have.json(EventsData);
+    return chakram.wait();
+  });
+});
+
+
+//          Add one Event
+//--------------------------------
+describe("HTTP assertions : Add one Event", function () {
+  it("It should return HTTP_201 : event ", function () {
+    var response = chakram.post(url+"/events", NewEventData);
+    expect(response).to.have.status(201);
+    //expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedEventSchema);
+    //expect(response).to.have.json(EventData);
+    return chakram.wait();
+  });
+});
+
+
+//          Retrive one Event
+//--------------------------------
+describe("HTTP assertions : Retrive one Event", function () {
+  it("It should return HTTP_200 : event ", function () {
+    var response = chakram.get(url+"/events/3651ac54-d393-495b-b2ae-a26616de3fc4");
+    expect(response).to.have.status(200);
+    //expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedEventSchema);
+    expect(response).to.have.json(EventData);
+    return chakram.wait();
+  });
+});
+
+//          Update one Event
+//--------------------------------
+describe("HTTP assertions : Update one Event", function () {
+  it("It should return HTTP_202 : event ", function () {
+    var response = chakram.put(url+"/events/3651ac54-d393-495b-b2ae-a26616de3fc4", UpdatedEventData);
+    expect(response).to.have.status(202);
+    //expect(response).to.have.header("content-type", "application/json");
+    expect(response).to.have.schema(expectedEventSchema);
+    //expect(response).to.have.json(EventData);
+    return chakram.wait();
+  });
+});
+
+
+//          Add one user to an Event
+//--------------------------------
+describe("HTTP assertions : Add one user to an Event", function () {
+  it("It should return HTTP_202", function () {
+    var response = chakram.put(url+"/events/users/3651ac54-d393-495b-b2ae-a26616de3fc4", userToAdd);
+    expect(response).to.have.status(202);
+    expect(response).to.have.schema(expectedEventSchema);
+    //expect(response).to.have.header("content-type", "application/json");
+    return chakram.wait();
+  });
+});
+
+//          Delete one user from an Event
+//--------------------------------
+describe("HTTP assertions : Delete one user from an Event", function () {
+  it("It should return HTTP_202", function () {
+    var response = chakram.delete(url+"/events/users/3651ac54-d393-495b-b2ae-a26616de3fc4", userToAdd);
+    expect(response).to.have.status(202);
+    expect(response).to.have.schema(expectedEventSchema);
+    //expect(response).to.have.header("content-type", "application/json");
+    return chakram.wait();
+  });
+});
+
+//          Delete one Event
+//--------------------------------
+describe("HTTP assertions : Delete one Event", function () {
+  it("It should return HTTP_200", function () {
+    var response = chakram.delete(url+"/events/3651ac54-d393-495b-b2ae-a26616de3fc4");
+    expect(response).to.have.status(200);
+    //expect(response).to.have.header("content-type", "application/json");
+    return chakram.wait();
+  });
+});
+
+

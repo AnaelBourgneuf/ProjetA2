@@ -15,6 +15,7 @@ const eventsRoutes = require('./src/routes/eventsRoutes')
 const hostname = '0.0.0.0';
 const port = 3000;
 
+version = "1.0"
 
 // je declare des variables pour le mocking
 var PromoData = {id: 1, name: 'Dev-A2', alias: 'Autistart+'}
@@ -40,7 +41,7 @@ app.listen(port, hostname, () => {
 
 // un moyen de connaitre la version de l'api
 app.get('/', (req, res) => {
-	res.send(`User API v${version}`)
+	res.send(`API v${version}`)
 })
 
 // un autre pour recuperer un uuid aleatoire

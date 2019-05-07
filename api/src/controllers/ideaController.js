@@ -6,6 +6,16 @@ const Joi = require('joi')
 let ideas = IdeaRepository
 let users = UserRepository
 
+//pour verifier qu'un objet existe
+function isset(object){
+	if (object){
+		return true;
+	}
+	else if (object.hasOwnProperty("id")){
+		return true;
+	}
+	return false;
+}
 
 
 
@@ -55,30 +65,30 @@ exports.deleteIdea = (req, res) => {
 
 // pour inscrire un utilisateur a une idee
 exports.addUser = (req, res) => {
-	const event = ideas.getIdeaById(req.params.id)
+	const idea = ideas.getIdeaById(req.params.id)
 	const user = users.getUserById(req.body.userId)
-	if (event){
-		if (user){
+	if (isset(idea)){
+		if (isset(user)){
 			res.status(202).send(ideas.addUser(req.params.id, req.body.userId))
 		} else {
 			res.status(404).send('user not found')
 		}
 	} else {
-		res.status(404).send('event not found')
+		res.status(404).send('idea not found')
 	}
 }
 
 // pour desinscrire un utilisateur d'une idee
 exports.subUser = (req, res) => {
-	const event = ideas.getIdeaById(req.params.id)
+	const idea = ideas.getIdeaById(req.params.id)
 	const user = users.getUserById(req.body.userId)
-	if (event){
-		if (user){
+	if (isset(idea)){
+		if (isset(user)){
 			res.status(202).send(ideas.subUser(req.params.id, req.body.userId))
 		} else {
 			res.status(404).send('user not found')
 		}
 	} else {
-		res.status(404).send('event not found')
+		res.status(404).send('idea not found')
 	}
 }

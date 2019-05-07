@@ -7,6 +7,21 @@ let events = EventRepository
 let users = UserRepository
 
 
+//pour verifier qu'un objet existe
+function isset(object){
+	try {
+		if (object){
+			return true;
+		}
+		else if (object.hasOwnProperty("id")){
+			return true;
+		}
+		return false;
+	} catch (e) {
+		return false;
+	}
+
+}
 
 
 // pour recuperer la liste complete des evenements
@@ -57,8 +72,8 @@ exports.deleteEvent = (req, res) => {
 exports.addUser = (req, res) => {
 	const event = events.getEventById(req.params.id)
 	const user = users.getUserById(req.body.userId)
-	if (event){
-		if (user){
+	if (isset(event)){
+		if (isset(user)){
 			res.status(202).send(events.addUser(req.params.id, req.body.userId))
 		} else {
 			res.status(404).send('user not found')
@@ -72,8 +87,8 @@ exports.addUser = (req, res) => {
 exports.deleteUser = (req, res) => {
 	const event = events.getEventById(req.params.id)
 	const user = users.getUserById(req.body.userId)
-	if (event){
-		if (user){
+	if (isset(event)){
+		if (isset(user)){
 			res.status(202).send(events.deleteUser(req.params.id, req.body.userId))
 		} else {
 			res.status(404).send('user not found')

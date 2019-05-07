@@ -32,6 +32,7 @@ class UserRepository {
 			id: uuid(),
 			... user
 		}
+		record.birthD = new Date(record.birthD).toString()
 		this.items.push(record)
 		return record
 	}

@@ -1,9 +1,22 @@
 swagger: "2.0"
 info:
-  title: Simple API overview
-  description: Hello
-  version: "v1"
-# host: www.monapi.dev
+  version: "1.2.0"
+  title: API gestion de classe
+# during dev, should point to your local machine
+host: 127.0.0.1:3000
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
 paths:
   /users:
     get:
@@ -389,7 +402,7 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/Idea'
-          description: all event infos
+          description: all idea infos
       responses:
         201 :
           description : CREATED
@@ -595,28 +608,55 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
+  /hello:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: hello
+      parameters:
+        - name: name
+          in: query
+          description: The name of the person to whom to say hello
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
 definitions:
   User:
     type: object
     properties:
-      id:
+      id: 
         type: string
         example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
-      firstName:
+      firstName: 
         type: string
         example: Roger
-      name:
+      name: 
         type: string
         example: Duchamp
-      birthD:
+      birthD: 
         type: string
         example: '12/12/1212'
-      alias:
+      alias: 
         type: string
         example: Roger's
       promo:
-        type: string
-        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+          type: string
+          example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
       mail :
         type: string
         example: prenom.nom@imie.fr
@@ -697,6 +737,18 @@ definitions:
       promo:
         type: string
         example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+  HelloWorldResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
 tags:
   - name: Users
     description: Everything about users
@@ -708,8 +760,3 @@ tags:
     description: Everything about ideas
   - name: Reviews
     description: Everything about reviews
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-basePath: /AnaelBM/testApi/v1
-schemes:
-  - https

@@ -4,7 +4,7 @@ const Joi = require('joi')
 
 let users = UserRepository
 
-
+let connected = []
 
 
 // pour recuperer la liste complete des utilisateurs
@@ -36,7 +36,7 @@ exports.updateUser = (req, res) => {
 	const user = users.getUserById(req.params.id)
 	if (user) {
 		//emailShouldBeAvailable(req, res)
-		console.log(req.body)
+		//console.log(req.body)
 		res.status(202).send(users.updateUser(req.params.id, req.body))
 	} else {
 		res.status(404).send('user not found')
@@ -53,4 +53,13 @@ exports.deleteUser = (req, res) => {
 		res.status(404).send('user not found')
 	}
 	res.end()
+}
+
+exports.connect = (req, res) => {
+	const user = users.getUserById(req.params.id)
+	if (user) {
+		const uuid = uuid()
+		connected.append({userId : req.params.id, sessionId : uuid})
+		res.status(202).send(uuid)
+	}
 }

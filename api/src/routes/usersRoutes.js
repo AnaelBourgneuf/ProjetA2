@@ -1,6 +1,6 @@
 const {Router} = require("express")
 
-const {addUser, getUserById, getUsersList, updateUser, deleteUser} = require('../controllers/userController')
+const {addUser, getUserById, getUsersList, updateUser, deleteUser, connect} = require('../controllers/userController')
 
 const app = module.exports = Router()
 
@@ -13,3 +13,6 @@ app.route('/:id')
 	.get(getUserById)
 	.put(updateUser)
 	.delete(deleteUser);
+
+app.route('/connect/:id')
+	.get(connect)

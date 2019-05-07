@@ -25,7 +25,7 @@ class ReviewRepository {
 	addReview(review){
 		const record = {
 			id: uuid(),
-			dateTime: new Date(),
+			dateTime: new Date().toString(),
 			... review
 		}
 		this.items.push(record)
