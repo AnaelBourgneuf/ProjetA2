@@ -4,10 +4,13 @@ const UserRepository = require('../repositories/userRepository')
 
 let users = UserRepository
 
-let connected = []
+let connected = [{ userId: '3651ac54-d393-495b-b2ae-a26616de3fc4',
+	sessionId: 'cede2d61-84d4-48ea-a6b6-bf9d1cfb354f',
+	lastOP: new Date() }]
 
 // pour qu'un autre élément de l'api puisse savoir qui est connecté
 exports.getConnected = connected
+
 
 // pour recuperer la liste complete des utilisateurs
 exports.getUsersList = (req, res) => {
@@ -93,6 +96,7 @@ exports.disconnect = (req, res) => {
 	} else {
 		res.status(400).send('Please specify session token')
 	}
+	res.end()
 }
 
 // pour qu'un utilisateur se connecte
