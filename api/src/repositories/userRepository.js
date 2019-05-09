@@ -33,6 +33,7 @@ class UserRepository {
 			... user
 		}
 		record.birthD = new Date(record.birthD).toString()
+		record.isAdmin = (record.isAdmin === "True")
 		this.items.push(record)
 		return record
 	}
