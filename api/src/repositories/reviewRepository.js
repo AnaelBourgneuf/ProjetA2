@@ -22,6 +22,16 @@ class ReviewRepository {
 		}
 	}
 
+	getReviewsByPromo (promoId) {
+		let promoReviews = []
+		for (const elem in this.items) {
+			if (elem.promo === promoId) {
+				promoReviews.push(elem)
+			}
+		}
+		return promoReviews
+	}
+
 	addReview(review){
 		const record = {
 			id: uuid(),

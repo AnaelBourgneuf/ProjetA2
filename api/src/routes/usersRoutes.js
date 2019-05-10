@@ -6,16 +6,16 @@ const app = module.exports = Router()
 
 
 //Décalaration de routes pour /Users
-app.route('/')
+app.route('')
 	.get(getUsersList)
-	.post(addUser);
+	.post(addUser)
 
 app.route('/:id')
 	.get(getUserById)
 	.put(updateUser)
-	.delete(deleteUser);
+	.delete(deleteUser)
 
-app.route('/connect/:id')
+app.route('/connect?id=:id')
 	.get(connect)
 
 app.route('/disconnect')

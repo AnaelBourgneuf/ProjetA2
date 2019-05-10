@@ -4,11 +4,11 @@ const app = module.exports = Router()
 const {addPromo, getPromoById, getPromosList, updatePromo, deletePromo} = require('../controllers/promoController')
 
 // Declaration de routes pour /Promos
-app.route('/')
+app.route('')
 .get(getPromosList)
 .post(addPromo);
 
-app.route('/:id')
+app.route('id=:id')
 .get(getPromoById)
 .put(updatePromo)
 .delete(deletePromo);

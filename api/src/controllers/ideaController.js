@@ -35,9 +35,9 @@ exports.getIdeaById = (req, res) => {
 exports.addIdea = (req, res) => {
 	if (req.body.token) {
 		if (isConnected(req.body.token)) {
-			const event = getIdeaFromReq(req.body)
-			if (event) {
-				res.status(201).send(ideas.addIdea(req.body))
+			const idea = getIdeaFromReq(req.body)
+			if (idea) {
+				res.status(201).send(ideas.addIdea(idea))
 			} else {
 				res.status(400).send('Bad request')
 			}
