@@ -31,10 +31,15 @@ exports.getUserById = (req, res) => {
 
 // pour ajouter un nouvel utilisateur
 exports.addUser = (req, res) => {
-	if (userEmailIsAvailable(getUserFromReq(req.body))) {
-		res.status(201).send(users.addUser(getUserFromReq(req.body)))
+	const user = getUserFromReq(req.body)
+	if (user.hasOwnProperty("email")) {
+		if (userEmailIsAvailable(user)) {
+			res.status(201).send(users.addUser(user))
+		} else {
+			res.status(400).send("Email is already used")
+		}
 	} else {
-		res.status(400).send("Email is already used")
+		res.status(400).send("Bad request")
 	}
 	res.end()
 }

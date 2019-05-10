@@ -24,7 +24,12 @@ exports.getPromoById = (req, res) => {
 exports.addPromo = (req, res) => {
 	if (req.body.token) {
 		if (isAdmin(req.body.token)) {
-			res.status(201).send(promos.addPromo(getPromoFromReq(req.body)))
+			const promo = getPromoFromReq(req.body)
+			if (promo) {
+				res.status(201).send(promos.addPromo(promo))
+			} else {
+				res.status(400).send('Bad request')
+			}
 		} else {
 			res.status(403).send('You are not authorised to perform this action')
 		}
