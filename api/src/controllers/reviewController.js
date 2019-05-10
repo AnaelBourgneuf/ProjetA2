@@ -33,6 +33,7 @@ exports.getReviewByToken = (req, res) => {
 		const i = userController.getConnected.findIndex(el => el.sessionId === req.body.token)
 		if (i !== -1) {
 			const user = users.getUserById(userController.getConnected[i].userId)
+			//console.log(user.promo)
 			if (user) {
 				res.status(200).send(reviews.getReviewsByPromo(user.promo))
 			} else {

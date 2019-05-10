@@ -16,7 +16,7 @@ class ReviewRepository {
 		//console.log(id)
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
-			return this.items.find(el => el.id === id)
+			return this.items[i]
 		} else {
 			return null
 		}
@@ -24,11 +24,17 @@ class ReviewRepository {
 
 	getReviewsByPromo (promoId) {
 		let promoReviews = []
-		for (const elem in this.items) {
-			if (elem.promo === promoId) {
-				promoReviews.push(elem)
+		Object.values(this.items).forEach(function(value) {
+			if (value["promo"] !== promoId){
+				promoReviews.push(value)
 			}
-		}
+		})
+		// for (let elem in this.items) {
+		// 	console.log(elem+" vs "+promoId)
+		// 	if (elem["promo"] === promoId) {
+		// 		promoReviews.push(elem)
+		// 	}
+		// }
 		return promoReviews
 	}
 
