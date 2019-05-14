@@ -1,0 +1,989 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Hello",
+    "version" : "v1",
+    "title" : "Simple API overview"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/AnaelBM/testApi/v1",
+  "tags" : [ {
+    "name" : "Users",
+    "description" : "Everything about users"
+  }, {
+    "name" : "Events",
+    "description" : "Everything about events"
+  }, {
+    "name" : "Promos",
+    "description" : "Everything about promos"
+  }, {
+    "name" : "Ideas",
+    "description" : "Everything about ideas"
+  }, {
+    "name" : "Reviews",
+    "description" : "Everything about reviews"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/users" : {
+      "get" : {
+        "tags" : [ "Users" ],
+        "summary" : "retrive all users",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/User"
+              }
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Users" ],
+        "summary" : "add a user",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user",
+          "description" : "all user infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "CREATED",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{userID}" : {
+      "get" : {
+        "tags" : [ "Users" ],
+        "summary" : "retrive single user",
+        "parameters" : [ {
+          "name" : "userID",
+          "in" : "path",
+          "description" : "uuid of user you want to retrive",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Users" ],
+        "summary" : "update a user",
+        "parameters" : [ {
+          "name" : "userID",
+          "in" : "path",
+          "description" : "uuid of user you want to update",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "user",
+          "description" : "all new user infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "ACCEPTED",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Users" ],
+        "summary" : "delete a users",
+        "parameters" : [ {
+          "name" : "userID",
+          "in" : "path",
+          "description" : "uuid of user you want to delete",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/events" : {
+      "get" : {
+        "tags" : [ "Events" ],
+        "summary" : "retrive all events",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Event"
+              }
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Events" ],
+        "summary" : "add an Event",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "event",
+          "description" : "all event infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Event"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "CREATED",
+            "schema" : {
+              "$ref" : "#/definitions/Event"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/events/{eventID}" : {
+      "get" : {
+        "tags" : [ "Events" ],
+        "summary" : "retrive single event",
+        "parameters" : [ {
+          "name" : "eventID",
+          "in" : "path",
+          "description" : "uuid of event you want to retrive",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Event"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Events" ],
+        "summary" : "update an event",
+        "parameters" : [ {
+          "name" : "eventID",
+          "in" : "path",
+          "description" : "uuid of event you want to update",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "event",
+          "description" : "all new event infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Event"
+          }
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "ACCEPTED",
+            "schema" : {
+              "$ref" : "#/definitions/Event"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Events" ],
+        "summary" : "delete an event",
+        "parameters" : [ {
+          "name" : "eventID",
+          "in" : "path",
+          "description" : "uuid of event you want to delete",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/promos" : {
+      "get" : {
+        "tags" : [ "Promos" ],
+        "summary" : "retrive all promos",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Promo"
+              }
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Promos" ],
+        "summary" : "add a Promo",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "promo",
+          "description" : "all promo infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Promo"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "CREATED",
+            "schema" : {
+              "$ref" : "#/definitions/Promo"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/promos/{promoID}" : {
+      "get" : {
+        "tags" : [ "Promos" ],
+        "summary" : "retrive single promo",
+        "parameters" : [ {
+          "name" : "promoID",
+          "in" : "path",
+          "description" : "uuid of promo you want to retrive",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Promo"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Promos" ],
+        "summary" : "update a promo",
+        "parameters" : [ {
+          "name" : "promoID",
+          "in" : "path",
+          "description" : "uuid of promo you want to update",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "promo",
+          "description" : "all new promo infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Promo"
+          }
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "ACCEPTED",
+            "schema" : {
+              "$ref" : "#/definitions/Promo"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Promos" ],
+        "summary" : "delete a promo",
+        "parameters" : [ {
+          "name" : "promoID",
+          "in" : "path",
+          "description" : "uuid of promo you want to delete",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ideas" : {
+      "get" : {
+        "tags" : [ "Ideas" ],
+        "summary" : "retrive all ideas",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Idea"
+              }
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Ideas" ],
+        "summary" : "add an Idea",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "event",
+          "description" : "all idea infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Idea"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "CREATED",
+            "schema" : {
+              "$ref" : "#/definitions/Idea"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ideas/{ideaID}" : {
+      "get" : {
+        "tags" : [ "Ideas" ],
+        "summary" : "retrive single idea",
+        "parameters" : [ {
+          "name" : "ideaID",
+          "in" : "path",
+          "description" : "uuid of idea you want to retrive",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Idea"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Ideas" ],
+        "summary" : "update an idea",
+        "parameters" : [ {
+          "name" : "ideaID",
+          "in" : "path",
+          "description" : "uuid of idea you want to update",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "idea",
+          "description" : "all new idea infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Idea"
+          }
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "ACCEPTED",
+            "schema" : {
+              "$ref" : "#/definitions/Idea"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Ideas" ],
+        "summary" : "delete an idea",
+        "parameters" : [ {
+          "name" : "ideaID",
+          "in" : "path",
+          "description" : "uuid of idea you want to delete",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/reviews" : {
+      "get" : {
+        "tags" : [ "Reviews" ],
+        "summary" : "retrive all reviews",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Review"
+              }
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Reviews" ],
+        "summary" : "add a review",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "review",
+          "description" : "all event infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Review"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "CREATED",
+            "schema" : {
+              "$ref" : "#/definitions/Review"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/reviews/{reviewID}" : {
+      "get" : {
+        "tags" : [ "Reviews" ],
+        "summary" : "retrive single review",
+        "parameters" : [ {
+          "name" : "reviewID",
+          "in" : "path",
+          "description" : "uuid of review you want to retrive",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Review"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Reviews" ],
+        "summary" : "update a review",
+        "parameters" : [ {
+          "name" : "reviewID",
+          "in" : "path",
+          "description" : "uuid of review you want to update",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "idea",
+          "description" : "all new review infos",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Review"
+          }
+        } ],
+        "responses" : {
+          "202" : {
+            "description" : "ACCEPTED",
+            "schema" : {
+              "$ref" : "#/definitions/Review"
+            }
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Reviews" ],
+        "summary" : "delete a review",
+        "parameters" : [ {
+          "name" : "reviewID",
+          "in" : "path",
+          "description" : "uuid of review you want to delete",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "204" : {
+            "description" : "No Content"
+          },
+          "400" : {
+            "description" : "Bad Request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "firstName" : {
+          "type" : "string",
+          "example" : "Roger"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Duchamp"
+        },
+        "birthD" : {
+          "type" : "string",
+          "example" : "12/12/1212"
+        },
+        "alias" : {
+          "type" : "string",
+          "example" : "Roger's"
+        },
+        "promo" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "mail" : {
+          "type" : "string",
+          "example" : "prenom.nom@imie.fr"
+        },
+        "isAdmin" : {
+          "type" : "boolean",
+          "example" : false
+        }
+      }
+    },
+    "Promo" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Dev-A2"
+        },
+        "alias" : {
+          "type" : "string",
+          "example" : "Autistart+"
+        }
+      }
+    },
+    "Event" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Jour de l'an"
+        },
+        "dateTime" : {
+          "type" : "string",
+          "example" : "01/01/2019"
+        },
+        "createDateTime" : {
+          "type" : "string",
+          "example" : "01/12/2018"
+        },
+        "users" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Event_users"
+          }
+        }
+      }
+    },
+    "Idea" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Mon idée1"
+        },
+        "text" : {
+          "type" : "string",
+          "example" : "Blablabla Blablabla Blablabla"
+        },
+        "dateTime" : {
+          "type" : "string",
+          "example" : "9/12/2018 11:11:02"
+        },
+        "user" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        }
+      }
+    },
+    "Review" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Module API"
+        },
+        "dateTime" : {
+          "type" : "string",
+          "example" : "11/12/2018 11:11:00"
+        },
+        "adress" : {
+          "type" : "string",
+          "example" : "http://www.google.com/"
+        },
+        "promo" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        }
+      }
+    },
+    "Event_users" : {
+      "properties" : {
+        "user" : {
+          "type" : "string",
+          "example" : "3651ac54-d393-495b-b2ae-a26616de3fc4"
+        },
+        "joinDateTime" : {
+          "type" : "string",
+          "example" : "11/12/2018 11:11:00"
+        }
+      }
+    }
+  }
+}
