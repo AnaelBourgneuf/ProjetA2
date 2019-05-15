@@ -4,15 +4,15 @@ const {addIdea, getIdeaById, getIdeasList, updateIdea, deleteIdea, addUser, subU
 const app = module.exports = Router()
 
 //Décalaration de routes pour /Users
-app.route('')
+app.route('/')
 	.get(getIdeasList)
 	.post(addIdea)
 
-app.route('id=:id')
+app.route('/:id')
 	.get(getIdeaById)
 	.put(updateIdea)
 	.delete(deleteIdea)
 
-app.route('/users?id=:id')
+app.route('/users/:id')
 	.put(addUser)
 	.delete(subUser)

@@ -4,7 +4,7 @@ const app = module.exports = Router()
 const {addReview, getReviewById, getReviewsList, updateReview, deleteReview, getReviewByToken} = require('../controllers/reviewController')
 
 // Déclaration de routes pour /Reviews
-app.route('')
+app.route('/')
 	.get(getReviewById)
 	.post(addReview)
 

@@ -6,7 +6,7 @@ const app = module.exports = Router()
 
 
 //Décalaration de routes pour /Users
-app.route('')
+app.route('/')
 	.get(getUsersList)
 	.post(addUser)
 
@@ -15,7 +15,7 @@ app.route('/:id')
 	.put(updateUser)
 	.delete(deleteUser)
 
-app.route('/connect?id=:id')
+app.route('/connect/:id')
 	.get(connect)
 
 app.route('/disconnect')

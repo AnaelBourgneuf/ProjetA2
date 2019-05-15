@@ -4,6 +4,7 @@
 	- Gestion des droits					Done
 	- Gestion des "Like/Dislike"			Done
 	- Branchement à la base de données
+	- Documentation Swagger					À refaire
 	- Tests automatisés						À refaire
 
 - Site internet

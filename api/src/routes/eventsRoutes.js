@@ -4,15 +4,15 @@ const app = module.exports = Router()
 const {addEvent, getEventById, getEventsList, updateEvent, deleteEvent, addUser, deleteUser} = require('../controllers/eventController')
 
 // Déclaration de sroutes pour /Events
-app.route('')
+app.route('/')
 	.get(getEventsList)
 	.post(addEvent)
 
-app.route('id=:id')
+app.route('/:id')
 	.get(getEventById)
 	.put(updateEvent)
 	.delete(deleteEvent);
 
-app.route('/users?id=:id')
+app.route('/users/:id')
 	.put(addUser)
 	.delete(deleteUser)
