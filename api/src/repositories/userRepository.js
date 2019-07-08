@@ -1,13 +1,11 @@
 const uuid = require('uuid')
-const util = require('util')
 
-const {addPromo, getPromoById, getPromosList, updatePromo, deletePromo} = require('../controllers/promoController')
 
 class UserRepository {
 
 	constructor () {
 		this.items = [
-			{ id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date(818003483771).toString(), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: false},
+			{ id: '3651ac54-d393-495b-b2ae-a26616de3fc4', firstName: 'Alice', name: 'Duvent', gender: 'female', birthD: new Date(818003483771).toString(), alias: "Lice", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "alice.apdm@gmail.com", isAdmin: true},
 			{ id: 'b66245cd-c1db-48dc-8c26-1c3ef8349175', firstName: 'Bob', name: 'Leponge', gender: 'male', birthD: new Date(638979083772).toString(), alias: null, promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "bob.leponge@gmail.com", isAdmin: false},
 			{ id: '488351f0-699a-4828-adba-4275c954efdb', firstName: 'Charlie', name: 'Ouest', gender: 'male', birthD: new Date(1004454683772).toString(), alias: "Charlot", promo: "b66245cd-c1db-48dc-8c26-1c3ef8349175", email: "charlie.ouest@gmail.com", isAdmin: false},
 		]
@@ -32,6 +30,8 @@ class UserRepository {
 			id: uuid(),
 			... user
 		}
+		record.birthD = new Date(record.birthD).toString()
+		record.isAdmin = (record.isAdmin === "True")
 		this.items.push(record)
 		return record
 	}
@@ -66,9 +66,9 @@ class UserRepository {
 			if (email) {
 				this.items[i].email = email
 			}
-			if (isAdmin) {
-				this.items[i].isAdmin = isAdmin
-			}
+			//if (isAdmin) {
+			//	this.items[i].isAdmin = isAdmin
+			//}
 		}
 		return this.getUserById(id)
 	}

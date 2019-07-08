@@ -31,6 +31,7 @@ class EventRepository {
 			users: [],
 			... event
 		}
+		record.dateTime = new Date(record.dateTime).toString()
 		this.items.push(record)
 		return record
 	}

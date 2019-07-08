@@ -16,16 +16,32 @@ class ReviewRepository {
 		//console.log(id)
 		const i = this.items.findIndex(el => el.id === id)
 		if (i !== -1) {
-			return this.items.find(el => el.id === id)
+			return this.items[i]
 		} else {
 			return null
 		}
 	}
 
+	getReviewsByPromo (promoId) {
+		let promoReviews = []
+		Object.values(this.items).forEach(function(value) {
+			if (value["promo"] !== promoId){
+				promoReviews.push(value)
+			}
+		})
+		// for (let elem in this.items) {
+		// 	console.log(elem+" vs "+promoId)
+		// 	if (elem["promo"] === promoId) {
+		// 		promoReviews.push(elem)
+		// 	}
+		// }
+		return promoReviews
+	}
+
 	addReview(review){
 		const record = {
 			id: uuid(),
-			dateTime: new Date(),
+			dateTime: new Date().toString(),
 			... review
 		}
 		this.items.push(record)

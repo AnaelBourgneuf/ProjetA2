@@ -5,11 +5,17 @@ info:
   version: "v1"
 # host: www.monapi.dev
 paths:
-  /Users:
+  /users:
     get:
       summary: retrive all users
       tags:
         - Users
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
       responses:
         200:
           description: OK
@@ -25,32 +31,6 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Users/{userID}:
-    get:
-      summary: retrive single user
-      tags:
-        - Users
-      parameters:
-        - in: path
-          name: userID
-          required: true
-          type: integer
-          minimum: 1
-          description: The user ID
-      responses:
-        200 :
-          description : OK
-          schema:
-            $ref: '#/definitions/User'
-        204 :
-          description : No Content
-        400 :
-          description: Bad Request
-        401 :
-          description: Unauthorized
-        500:
-          description: Internal Server Error
-  /Users/new:
     post:
       summary: add a user
       tags:
@@ -60,7 +40,7 @@ paths:
           name: user
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/UserAndToken'
           description: all user infos
       responses:
         201 :
@@ -75,7 +55,35 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Users/update/{userID}:
+  /users/{userID}:
+    get:
+      summary: retrive single user
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: userID
+          required: true
+          type: string
+          description: uuid of user you want to retrive
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/User'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
     put:
       summary: update a user
       tags:
@@ -84,14 +92,13 @@ paths:
         - in: path
           name: userID
           required: true
-          type: integer
-          minimum: 1
-          description: The user ID
+          type: string
+          description: uuid of user you want to update
         - in: body
           name: user
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/UserAndToken'
           description: all new user infos
       responses:
         202 :
@@ -106,18 +113,21 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Users/delete/{userID}:
     delete:
       summary: delete a users
       tags:
         - Users
-      parameters:
+      parameters: 
         - in: path
           name: userID
           required: true
-          type: integer
-          minimum: 1
-          description: ID of the user to delete
+          type: string
+          description: uuid of user you want to delete
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
       responses:
         200:
           description: OK
@@ -129,11 +139,64 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Events:
+  /users/connect/{userID}:
+    get:
+      summary: connect a user
+      tags: 
+        - Users
+      parameters: 
+        - in: path
+          name: userID
+          required: true
+          type: string
+          description: uuid of user you want to connect
+      responses:
+        202:
+          description: accepted
+          schema: 
+            $ref: '#/definitions/UUID'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Errors
+  /users/disconnect:
+    post:
+      summary: disconnect a user
+      tags:
+        - Users
+      parameters:
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
+          description: token of the connected user you want to disconnect
+      responses:
+        200:
+          description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Errors
+  /events:
     get:
       summary: retrive all events
       tags:
         - Events
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
       responses:
         200:
           description: OK
@@ -149,32 +212,6 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Events/{eventID}:
-    get:
-      summary: retrive single event
-      tags:
-        - Events
-      parameters:
-        - in: path
-          name: eventID
-          required: true
-          type: integer
-          minimum: 1
-          description: The event ID
-      responses:
-        200 :
-          description : OK
-          schema:
-            $ref: '#/definitions/Event'
-        204 :
-          description : No Content
-        400 :
-          description: Bad Request
-        401 :
-          description: Unauthorized
-        500:
-          description: Internal Server Error
-  /Events/new:
     post:
       summary: add an Event
       tags:
@@ -184,7 +221,7 @@ paths:
           name: event
           required: true
           schema:
-            $ref: '#/definitions/Event'
+            $ref: '#/definitions/EventAndToken'
           description: all event infos
       responses:
         201 :
@@ -199,7 +236,35 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Events/update/{eventID}:
+  /events/{eventID}:
+    get:
+      summary: retrive single event
+      tags:
+        - Events
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
+        - in: path
+          name: eventID
+          required: true
+          type: string
+          description: uuid of event you want to retrive
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Event'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
     put:
       summary: update an event
       tags:
@@ -208,14 +273,13 @@ paths:
         - in: path
           name: eventID
           required: true
-          type: integer
-          minimum: 1
-          description: The event ID
+          type: string
+          description: uuid of event you want to update
         - in: body
           name: event
           required: true
           schema:
-            $ref: '#/definitions/Event'
+            $ref: '#/definitions/EventAndToken'
           description: all new event infos
       responses:
         202 :
@@ -230,18 +294,21 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Events/delete/{eventID}:
     delete:
       summary: delete an event
       tags:
         - Events
       parameters:
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
         - in: path
           name: eventID
           required: true
-          type: integer
-          minimum: 1
-          description: ID of the event to delete
+          type: string
+          description: uuid of event you want to delete
       responses:
         200:
           description: OK
@@ -253,11 +320,80 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Promos:
+  /events/users/{eventID}:
+    put:
+      summary: add one user to an event
+      tags: 
+        - Events
+      parameters:
+        - in: path
+          name: eventID
+          required: true
+          type: string
+          description: uuid of event you want to add user on
+        - in: body
+          name: token and userID
+          required: false
+          schema:
+            $ref: '#/definitions/TokenAndUserID'
+          description: token of current user and uuid of user to add
+      responses:
+        202:
+          description: accepted
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Event'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+    delete:
+      summary: delete one user from an event
+      tags: 
+        - Events
+      parameters:
+        - in: path
+          name: eventID
+          required: true
+          type: string
+          description: uuid of event you want to delete user from
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
+          description: token of current user
+      responses:
+        202:
+          description: accepted
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Idea'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /promos:
     get:
       summary: retrive all promos
       tags:
         - Promos
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
       responses:
         200:
           description: OK
@@ -273,32 +409,6 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Promos/{promoID}:
-    get:
-      summary: retrive single promo
-      tags:
-        - Promos
-      parameters:
-        - in: path
-          name: promoID
-          required: true
-          type: integer
-          minimum: 1
-          description: The promotion ID
-      responses:
-        200 :
-          description : OK
-          schema:
-            $ref: '#/definitions/Promo'
-        204 :
-          description : No Content
-        400 :
-          description: Bad Request
-        401 :
-          description: Unauthorized
-        500:
-          description: Internal Server Error
-  /Promos/new:
     post:
       summary: add a Promo
       tags:
@@ -308,7 +418,7 @@ paths:
           name: promo
           required: true
           schema:
-            $ref: '#/definitions/Promo'
+            $ref: '#/definitions/PromoAndToken'
           description: all promo infos
       responses:
         201 :
@@ -323,7 +433,35 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Promos/update/{promoID}:
+  /promos/{promoID}:
+    get:
+      summary: retrive single promo
+      tags:
+        - Promos
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
+        - in: path
+          name: promoID
+          required: true
+          type: string
+          description: uuid of promo you want to retrive
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Promo'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
     put:
       summary: update a promo
       tags:
@@ -332,14 +470,13 @@ paths:
         - in: path
           name: promoID
           required: true
-          type: integer
-          minimum: 1
-          description: The promo ID
+          type: string
+          description: uuid of promo you want to update
         - in: body
           name: promo
           required: true
           schema:
-            $ref: '#/definitions/Promo'
+            $ref: '#/definitions/PromoAndToken'
           description: all new promo infos
       responses:
         202 :
@@ -354,18 +491,21 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Promos/delete/{promoID}:
     delete:
       summary: delete a promo
       tags:
         - Promos
       parameters:
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
         - in: path
           name: promoID
           required: true
-          type: integer
-          minimum: 1
-          description: ID of the promo to delete
+          type: string
+          description: uuid of promo you want to delete
       responses:
         200:
           description: OK
@@ -377,11 +517,17 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Ideas:
+  /ideas:
     get:
       summary: retrive all ideas
       tags:
         - Ideas
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
       responses:
         200:
           description: OK
@@ -397,32 +543,6 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Ideas/{ideaID}:
-    get:
-      summary: retrive single idea
-      tags:
-        - Ideas
-      parameters:
-        - in: path
-          name: ideaID   # Note the name is the same as in the path
-          required: true
-          type: integer
-          minimum: 1
-          description: The idea ID
-      responses:
-        200 :
-          description : OK
-          schema:
-            $ref: '#/definitions/Idea'
-        204 :
-          description : No Content
-        400 :
-          description: Bad Request
-        401 :
-          description: Unauthorized
-        500:
-          description: Internal Server Error
-  /Ideas/new:
     post:
       summary: add an Idea
       tags:
@@ -432,8 +552,8 @@ paths:
           name: event
           required: true
           schema:
-            $ref: '#/definitions/Idea'
-          description: all event infos
+            $ref: '#/definitions/IdeaAndToken'
+          description: all idea infos
       responses:
         201 :
           description : CREATED
@@ -447,7 +567,35 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Ideas/update/{ideaID}:
+  /ideas/{ideaID}:
+    get:
+      summary: retrive single idea
+      tags:
+        - Ideas
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
+        - in: path
+          name: ideaID   # Note the name is the same as in the path
+          required: true
+          type: string
+          description: uuid of idea you want to retrive
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Idea'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
     put:
       summary: update an idea
       tags:
@@ -456,14 +604,13 @@ paths:
         - in: path
           name: ideaID
           required: true
-          type: integer
-          minimum: 1
-          description: The idea ID
+          type: string
+          description: uuid of idea you want to update
         - in: body
           name: idea
           required: true
           schema:
-            $ref: '#/definitions/Idea'
+            $ref: '#/definitions/IdeaAndToken'
           description: all new idea infos
       responses:
         202 :
@@ -478,21 +625,248 @@ paths:
           description: Unauthorized
         500:
           description: Internal Server Error
-  /Ideas/delete/{ideaID}:
     delete:
       summary: delete an idea
       tags:
         - Ideas
       parameters:
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
         - in: path
           name: ideaID
           required: true
-          type: integer
-          minimum: 1
-          description: ID of the idea to delete
+          type: string
+          description: uuid of idea you want to delete
       responses:
         200:
           description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /ideas/users/{ideaID}:
+    put:
+      summary: add one user to an idea
+      tags: 
+        - Ideas
+      parameters:
+        - in: path
+          name: ideaID
+          required: true
+          type: string
+          description: uuid of idea you want to add user on
+        - in: body
+          name: token and userID
+          required: false
+          schema:
+            $ref: '#/definitions/TokenAndUserID'
+          description: token of current user and uuid of user to add
+      responses:
+        202:
+          description: accepted
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Idea'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+    delete:
+      summary: delete one user from an idea
+      tags: 
+        - Ideas
+      parameters:
+        - in: path
+          name: ideaID
+          required: true
+          type: string
+          description: uuid of idea you want to delete user from
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
+          description: token of current user
+      responses:
+        202:
+          description: accepted
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Idea'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /reviews:
+    get:
+      summary: retrive all reviews
+      tags:
+        - Reviews
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Review'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+    post:
+      summary: add a review
+      tags:
+        - Reviews
+      parameters:
+        - in: body
+          name: review
+          required: true
+          schema:
+            $ref: '#/definitions/ReviewAndToken'
+          description: all event infos
+      responses:
+        201 :
+          description : CREATED
+          schema:
+            $ref: '#/definitions/Review'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /reviews/{reviewID}:
+    get:
+      summary: retrive single review
+      tags:
+        - Reviews
+      parameters:
+        - in: body
+          name: token
+          required: false
+          schema:
+            $ref: '#/definitions/UUID'
+        - in: path
+          name: reviewID   # Note the name is the same as in the path
+          required: true
+          type: string
+          description: uuid of review you want to retrive
+      responses:
+        200 :
+          description : OK
+          schema:
+            $ref: '#/definitions/Review'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+    put:
+      summary: update a review
+      tags:
+        - Reviews
+      parameters:
+        - in: path
+          name: reviewID
+          required: true
+          type: string
+          description: uuid of review you want to update
+        - in: body
+          name: idea
+          required: true
+          schema:
+            $ref: '#/definitions/ReviewAndToken'
+          description: all new review infos
+      responses:
+        202 :
+          description : ACCEPTED
+          schema:
+            $ref: '#/definitions/Review'
+        204 :
+          description : No Content
+        400 :
+          description: Bad Request
+        401 :
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+    delete:
+      summary: delete a review
+      tags:
+        - Reviews
+      parameters:
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
+        - in: path
+          name: reviewID
+          required: true
+          type: string
+          description: uuid of review you want to delete
+      responses:
+        200:
+          description: OK
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+  /reviews/user:
+    get:
+      summary: get all reviews for current user
+      tags:
+        - Reviews
+      parameters:
+        - in: body
+          name: token
+          required: true
+          schema:
+            $ref: '#/definitions/UUID'
+          description: token of current user
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Review'
         204:
           description: No Content
         400:
@@ -506,8 +880,8 @@ definitions:
     type: object
     properties:
       id: 
-        type: integer
-        example: 1
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
       firstName: 
         type: string
         example: Roger
@@ -521,31 +895,75 @@ definitions:
         type: string
         example: Roger's
       promo:
-          $ref: '#/definitions/Promo'
+          type: string
+          example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
       mail :
         type: string
         example: prenom.nom@imie.fr
       isAdmin :
         type: boolean
         example: false
+  UserAndToken:
+    type: object
+    properties:
+      id: 
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      firstName: 
+        type: string
+        example: Roger
+      name: 
+        type: string
+        example: Duchamp
+      birthD: 
+        type: string
+        example: '12/12/1212'
+      alias: 
+        type: string
+        example: Roger's
+      promo:
+          type: string
+          example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      mail :
+        type: string
+        example: prenom.nom@imie.fr
+      isAdmin :
+        type: boolean
+        example: false
+      token:
+        $ref: '#/definitions/UUID'
   Promo:
     type: object
     properties:
       id:
-        type: integer
-        example: 1
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
       name:
         type: string
         example: Dev-A2
       alias:
         type: string
         example: Autistart+
+  PromoAndToken:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      name:
+        type: string
+        example: Dev-A2
+      alias:
+        type: string
+        example: Autistart+
+      token:
+        $ref: '#/definitions/UUID'
   Event:
     type: object
     properties:
       id:
-        type: integer
-        example: 1
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
       title:
         type: string
         example: Jour de l'an
@@ -561,16 +979,45 @@ definitions:
           type: object
           properties:
             user:
-              $ref: "#/definitions/User"
+              type: string
+              example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
             joinDateTime :
               type: string
               example: "11/12/2018 11:11:00"
+  EventAndToken:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      title:
+        type: string
+        example: Jour de l'an
+      dateTime:
+        type: string
+        example: "01/01/2019"
+      createDateTime:
+        type: string
+        example: '01/12/2018'
+      users:
+        type: array
+        items:
+          type: object
+          properties:
+            user:
+              type: string
+              example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+            joinDateTime :
+              type: string
+              example: "11/12/2018 11:11:00"
+      token:
+        $ref: '#/definitions/UUID'
   Idea:
     type: object
     properties:
       id:
-        type: integer
-        example: 1
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
       title:
         type: string
         example: "Mon idée1"
@@ -581,7 +1028,78 @@ definitions:
         type: string
         example: "9/12/2018 11:11:02"
       user:
-        $ref: "#/definitions/User"
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+  IdeaAndToken:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      title:
+        type: string
+        example: "Mon idée1"
+      text:
+        type: string
+        example: "Blablabla Blablabla Blablabla"
+      dateTime:
+        type: string
+        example: "9/12/2018 11:11:02"
+      user:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      token:
+        $ref: '#/definitions/UUID'
+  Review:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      title:
+        type: string
+        example: Module API
+      dateTime:
+        type: string
+        example: "11/12/2018 11:11:00"
+      adress:
+        type: string
+        example: http://www.google.com/
+      promo:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+  ReviewAndToken:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      title:
+        type: string
+        example: Module API
+      dateTime:
+        type: string
+        example: "11/12/2018 11:11:00"
+      adress:
+        type: string
+        example: http://www.google.com/
+      promo:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      token:
+        $ref: '#/definitions/UUID'
+  UUID:
+    type: string
+    example: "cede2d61-84d4-48ea-a6b6-bf9d1cfb354f"
+  TokenAndUserID:
+    type: object
+    properties:
+      userID:
+        type: string
+        example: "3651ac54-d393-495b-b2ae-a26616de3fc4"
+      token:
+        type: string
+        example: "cede2d61-84d4-48ea-a6b6-bf9d1cfb354f"
 tags:
   - name: Users
     description: Everything about users
@@ -591,6 +1109,8 @@ tags:
     description: Everything about promos
   - name: Ideas
     description: Everything about ideas
+  - name: Reviews
+    description: Everything about reviews
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 basePath: /AnaelBM/testApi/v1

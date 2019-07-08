@@ -1,4 +1,22 @@
-tests unitaires
-fixtures
-code coverage
+- Api
+	- Gestion des chemins					Done
+	- Gestion des connexions				Done
+	- Gestion des droits					Done
+	- Gestion des "Like/Dislike"			Done
+	- Branchement à la base de données
+	- Documentation Swagger					À refaire
+	- Tests automatisés						À refaire
 
+- Site internet
+	- Maquettes								À compléter
+	- Bases HTML + style
+	- Javascript + AJAX
+
+- Appli Android
+	- Maquettes								Site mobile ~
+	- ...
+
+- Appli iOs
+	- Prise en main swift
+	- Maquettes								Site mobile ~
+	- ...

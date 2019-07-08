@@ -27,7 +27,9 @@ class IdeaRepository {
 	addIdea(idea){
 		const record = {
 			id: uuid(),
-			dateTime: new Date(),
+			dateTime: new Date().toString(),
+			plus: [],
+			moins: [],
 			... idea
 		}
 		this.items.push(record)
