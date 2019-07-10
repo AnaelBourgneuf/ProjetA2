@@ -1,0 +1,64 @@
+
+/** Page D'acceuil  */
+.title-centered{
+    text-align: center;
+}
+
+.fondrouge{
+    background-color: red;
+}
+
+.fondazur{
+    background-color: rgba(63, 191, 239, 1);
+}
+
+.fondjaune{
+    background-color: yellow;
+}
+
+.fondvert{
+    background-color: green;
+}
+.menucarre{
+    border: 2px solid;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem;
+    height: 50rem;
+}
+
+
+.fen{
+    text-align: center;
+    /* margin-left: 50px; */
+    font-size: 5em;
+    padding-top: auto;
+    width: 600px;
+    height: 300px;
+    
+}
+
+/* .fen1{
+    text-align: center;
+    width: 30%;
+    height: 30%;
+}
+
+.fen2{
+    text-align: center;
+    width: 30%;
+    height: 30%;
+}
+
+.fen3{
+    text-align: center;
+    width: 30%;
+    height: 30%;
+}
+
+.fen4{
+    text-align: center;
+    width: 30%;
+    height: 30%;
+} */
